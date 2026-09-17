@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IFRS Standards · interactive guide with simple examples</title>
+    <title>IFRS Expert Guide · 5 examples per standard</title>
     <style>
         * {
             box-sizing: border-box;
@@ -13,38 +13,38 @@
 
         body {
             font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-            background: #f3f6fc;
-            color: #1e293b;
-            line-height: 1.5;
-            padding: 2rem 1rem;
+            background: #eef3fa;
+            color: #0f1e2f;
+            line-height: 1.55;
+            padding: 1.5rem;
         }
 
         .app-container {
-            max-width: 1280px;
+            max-width: 1400px;
             margin: 0 auto;
             background: white;
             border-radius: 2.5rem;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 30px 60px -18px rgba(0, 20, 50, 0.25);
             padding: 2rem 2rem 1.5rem;
-            border: 1px solid #e2e8f0;
+            border: 1px solid #d9e2ef;
         }
 
         h1 {
-            font-size: 2.2rem;
+            font-size: 2.4rem;
             font-weight: 700;
             letter-spacing: -0.02em;
+            color: #0b2b4f;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.6rem;
             margin-bottom: 0.25rem;
-            color: #0b2b4f;
         }
 
         .subhead {
-            color: #4a5c72;
+            color: #3f5777;
+            font-size: 1.1rem;
             margin-bottom: 2rem;
-            font-size: 1.05rem;
-            border-left: 4px solid #2d7ff9;
+            border-left: 5px solid #2d7ff9;
             padding-left: 1rem;
             font-weight: 400;
         }
@@ -61,10 +61,6 @@
             padding: 1.2rem 1.5rem 1.5rem;
             border: 1px solid #dfe7f0;
             transition: box-shadow 0.15s;
-        }
-
-        .category-section:hover {
-            box-shadow: 0 6px 14px rgba(0, 47, 92, 0.06);
         }
 
         .category-title {
@@ -101,9 +97,6 @@
             padding: 0.9rem 1.2rem;
             cursor: pointer;
             transition: all 0.15s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
             user-select: none;
         }
@@ -131,7 +124,6 @@
             font-weight: 600;
             padding: 0.15rem 0.6rem;
             border-radius: 999px;
-            letter-spacing: 0.02em;
         }
 
         .standard-card .short-title {
@@ -142,14 +134,14 @@
             line-height: 1.3;
         }
 
-        /* Modal overlay */
+        /* modal */
         .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(8, 20, 40, 0.6);
+            background-color: rgba(8, 20, 40, 0.65);
             backdrop-filter: blur(5px);
             display: flex;
             align-items: center;
@@ -168,11 +160,11 @@
 
         .modal-content {
             background: white;
-            max-width: 850px;
+            max-width: 950px;
             width: 100%;
-            max-height: 85vh;
+            max-height: 88vh;
             border-radius: 2.2rem;
-            box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.45);
             display: flex;
             flex-direction: column;
             overflow: hidden;
@@ -207,6 +199,7 @@
             display: flex;
             align-items: center;
             gap: 0.7rem;
+            flex-wrap: wrap;
         }
 
         .modal-header h2 small {
@@ -216,7 +209,6 @@
             color: #1f5fa8;
             padding: 0.2rem 0.9rem;
             border-radius: 999px;
-            letter-spacing: 0.02em;
         }
 
         .close-btn {
@@ -245,9 +237,9 @@
         }
 
         .modal-body h3 {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             font-weight: 600;
-            margin: 1.2rem 0 0.5rem;
+            margin: 1.4rem 0 0.7rem;
             color: #0d3b66;
             border-left: 5px solid #2d7ff9;
             padding-left: 0.8rem;
@@ -258,16 +250,16 @@
         }
 
         .modal-body p {
-            margin-bottom: 0.9rem;
+            margin-bottom: 0.8rem;
         }
 
         .example-box {
             background: #f3f9ff;
-            border-radius: 1.2rem;
-            padding: 1.1rem 1.4rem;
-            margin: 1.2rem 0 0.8rem;
+            border-radius: 1rem;
+            padding: 1rem 1.3rem;
+            margin: 0.8rem 0;
             border-left: 6px solid #2d7ff9;
-            font-size: 0.98rem;
+            font-size: 0.96rem;
             box-shadow: 0 2px 6px rgba(0, 47, 92, 0.04);
         }
 
@@ -276,13 +268,12 @@
             font-weight: 700;
         }
 
-        .modal-body ul, .modal-body ol {
-            padding-left: 1.5rem;
-            margin: 0.7rem 0 1rem;
+        .example-box p {
+            margin-bottom: 0.6rem;
         }
 
-        .modal-body li {
-            margin-bottom: 0.3rem;
+        .example-box p:last-child {
+            margin-bottom: 0;
         }
 
         .note {
@@ -292,7 +283,7 @@
             font-size: 0.9rem;
             color: #7a5d00;
             border-left: 5px solid #f7b731;
-            margin-top: 1.2rem;
+            margin-top: 1.4rem;
         }
 
         footer {
@@ -304,7 +295,6 @@
             padding-top: 1.2rem;
         }
 
-        /* Responsive */
         @media (max-width: 600px) {
             .app-container {
                 padding: 1.2rem;
@@ -329,16 +319,15 @@
 </head>
 <body>
 <div class="app-container">
-    <h1>📘 IFRS Standards</h1>
-    <div class="subhead">Click any standard to reveal its full literature and a simple accounting example.</div>
+    <h1>📘 IFRS Expert Guide</h1>
+    <div class="subhead">Click any standard to open its full literature and five plain‑language accounting examples.</div>
 
     <div class="category-grid" id="categoryGrid">
-        <!-- categories and cards will be injected with JS -->
+        <!-- injected -->
     </div>
-    <footer>Active IFRS & IAS standards — interactive guide with plain‑language examples</footer>
+    <footer>Active IFRS & IAS standards — comprehensive examples for practical understanding</footer>
 </div>
 
-<!-- MODAL -->
 <div class="modal-overlay" id="modalOverlay">
     <div class="modal-content">
         <div class="modal-header">
@@ -346,93 +335,114 @@
             <button class="close-btn" id="closeModalBtn" aria-label="Close">&times;</button>
         </div>
         <div class="modal-body" id="modalBody">
-            <!-- dynamic content -->
+            <!-- dynamic -->
         </div>
     </div>
 </div>
 
 <script>
-    // ----------------------------------------------------------------
-    // 1. DATA: all standards grouped by category
-    // ----------------------------------------------------------------
+    // ------------------------------------------------------------------
+    // 1. CATEGORIES (with all IFRS + selected IAS)
+    // ------------------------------------------------------------------
     const categories = [
         {
             name: "📊 Presentation & Framework",
             standards: [
-                { code: "IFRS 1", title: "First-time Adoption of IFRS", desc: "Guidance for entities transitioning to IFRS for the first time." },
-                { code: "IFRS 18", title: "Presentation and Disclosure in Financial Statements", desc: "New standard (effective 2027) replacing IAS 1, introducing mandatory subtotals." }
+                { code: "IFRS 1", title: "First-time Adoption of IFRS" },
+                { code: "IFRS 18", title: "Presentation and Disclosure" },
+                { code: "IAS 1", title: "Presentation of Financial Statements" },
+                { code: "IAS 8", title: "Accounting Policies, Changes in Estimates" },
+                { code: "IAS 10", title: "Events after the Reporting Period" },
+                { code: "IAS 34", title: "Interim Financial Reporting" }
             ]
         },
         {
             name: "💼 Business Combinations & Consolidation",
             standards: [
-                { code: "IFRS 3", title: "Business Combinations", desc: "Accounting for acquisitions using the acquisition method." },
-                { code: "IFRS 10", title: "Consolidated Financial Statements", desc: "Principles for presenting consolidated financial statements." },
-                { code: "IFRS 11", title: "Joint Arrangements", desc: "Accounting for joint operations and joint ventures." },
-                { code: "IFRS 12", title: "Disclosure of Interests in Other Entities", desc: "Disclosure requirements for subsidiaries, associates and joint arrangements." }
+                { code: "IFRS 3", title: "Business Combinations" },
+                { code: "IFRS 10", title: "Consolidated Financial Statements" },
+                { code: "IFRS 11", title: "Joint Arrangements" },
+                { code: "IFRS 12", title: "Disclosure of Interests in Other Entities" },
+                { code: "IAS 28", title: "Investments in Associates and Joint Ventures" },
+                { code: "IAS 27", title: "Separate Financial Statements" }
             ]
         },
         {
             name: "📈 Measurement & Assets",
             standards: [
-                { code: "IFRS 2", title: "Share-based Payment", desc: "Recognition of share-based payment transactions." },
-                { code: "IFRS 5", title: "Non-current Assets Held for Sale", desc: "Classification, measurement and presentation of assets held for sale." },
-                { code: "IFRS 6", title: "Exploration for Mineral Resources", desc: "Accounting for exploration and evaluation assets." },
-                { code: "IFRS 13", title: "Fair Value Measurement", desc: "How to measure fair value and required disclosures." },
-                { code: "IFRS 16", title: "Leases", desc: "Lessee accounting: right-of-use asset and lease liability." }
+                { code: "IFRS 2", title: "Share-based Payment" },
+                { code: "IFRS 5", title: "Non-current Assets Held for Sale" },
+                { code: "IFRS 6", title: "Exploration for Mineral Resources" },
+                { code: "IFRS 13", title: "Fair Value Measurement" },
+                { code: "IFRS 16", title: "Leases" },
+                { code: "IAS 2", title: "Inventories" },
+                { code: "IAS 16", title: "Property, Plant and Equipment" },
+                { code: "IAS 36", title: "Impairment of Assets" },
+                { code: "IAS 38", title: "Intangible Assets" },
+                { code: "IAS 40", title: "Investment Property" },
+                { code: "IAS 41", title: "Agriculture" }
             ]
         },
         {
-            name: "💰 Financial Instruments",
+            name: "💰 Financial Instruments & Liabilities",
             standards: [
-                { code: "IFRS 7", title: "Financial Instruments: Disclosures", desc: "Disclosures about financial instruments and risk." },
-                { code: "IFRS 9", title: "Financial Instruments", desc: "Classification, measurement, impairment and hedge accounting." }
+                { code: "IFRS 7", title: "Financial Instruments: Disclosures" },
+                { code: "IFRS 9", title: "Financial Instruments" },
+                { code: "IAS 32", title: "Financial Instruments: Presentation" },
+                { code: "IAS 39", title: "Financial Instruments: Recognition" },
+                { code: "IAS 37", title: "Provisions, Contingent Liabilities" }
             ]
         },
         {
             name: "📝 Revenue & Expenses",
             standards: [
-                { code: "IFRS 15", title: "Revenue from Contracts with Customers", desc: "Five-step model for revenue recognition." }
+                { code: "IFRS 15", title: "Revenue from Contracts with Customers" },
+                { code: "IAS 18", title: "Revenue (superseded by IFRS 15)" },
+                { code: "IAS 23", title: "Borrowing Costs" },
+                { code: "IAS 19", title: "Employee Benefits" },
+                { code: "IAS 12", title: "Income Taxes" }
             ]
         },
         {
             name: "🛡️ Insurance",
             standards: [
-                { code: "IFRS 17", title: "Insurance Contracts", desc: "Measurement of insurance contracts using fulfilment cash flows and CSM." }
+                { code: "IFRS 17", title: "Insurance Contracts" }
             ]
         },
         {
             name: "⚙️ Specialized Standards",
             standards: [
-                { code: "IFRS 14", title: "Regulatory Deferral Accounts", desc: "Interim standard for rate-regulated entities." },
-                { code: "IFRS 19", title: "Subsidiaries without Public Accountability", desc: "Reduced disclosure requirements for eligible subsidiaries." }
+                { code: "IFRS 14", title: "Regulatory Deferral Accounts" },
+                { code: "IFRS 19", title: "Subsidiaries without Public Accountability" },
+                { code: "IAS 20", title: "Government Grants" },
+                { code: "IAS 21", title: "Effects of Changes in Foreign Exchange Rates" },
+                { code: "IAS 24", title: "Related Party Disclosures" },
+                { code: "IAS 29", title: "Hyperinflationary Economies" },
+                { code: "IAS 33", title: "Earnings per Share" }
             ]
         }
     ];
 
-    // ----------------------------------------------------------------
-    // 2. DETAILED CONTENT for each standard (whole literature + example)
-    // ----------------------------------------------------------------
-    const standardDetails = {
+    // ------------------------------------------------------------------
+    // 2. COMPREHENSIVE DETAILS: literature + 5 examples each
+    // ------------------------------------------------------------------
+    const details = {
         "IFRS 1": {
             fullTitle: "First-time Adoption of International Financial Reporting Standards",
             literature: [
                 "An entity must prepare an opening IFRS statement of financial position at the date of transition.",
                 "All assets and liabilities must be recognised and measured in accordance with IFRS.",
                 "Adjustments arising from transition are recognised directly in retained earnings (or another equity component).",
-                "Disclosures explaining how the transition affected financial position, performance and cash flows are required."
+                "Disclosures explaining how the transition affected financial position, performance and cash flows are required.",
+                "Two categories of exceptions: mandatory exceptions (retrospective application prohibited) and optional exemptions."
             ],
-            example: "**Example:** A private company adopts IFRS for the first time in 2026. It previously used local GAAP. On 1 Jan 2025 (transition date), it restates its PPE to fair value, increasing the carrying amount by $50,000. The $50,000 is adjusted against opening retained earnings."
-        },
-        "IFRS 18": {
-            fullTitle: "Presentation and Disclosure in Financial Statements (effective 2027)",
-            literature: [
-                "Introduces three new categories in the income statement: operating, investing and financing.",
-                "Requires mandatory subtotals, e.g., operating profit and profit before financing and income taxes.",
-                "Provides enhanced guidance on aggregation and disaggregation of information.",
-                "Replaces IAS 1, but many presentation principles remain similar."
-            ],
-            example: "**Example:** A retail company has interest expense of $10,000 and interest income of $3,000. Under IFRS 18, it must present 'operating profit' and then show financing and investing categories separately, making the $7,000 net financing cost clear to users."
+            examples: [
+                "**Example 1 — Opening balance sheet:** A private company adopts IFRS for the first time on 1 Jan 2026. On transition date (1 Jan 2025), it restates PPE to fair value, increasing carrying amount by $50,000. The $50,000 is adjusted against opening retained earnings.",
+                "**Example 2 — Deemed cost exemption:** A company uses fair value as deemed cost for a building. Previously the building was carried at $200,000 under local GAAP, but fair value is $350,000. It uses the $350,000 as the starting IFRS carrying amount, with the $150,000 adjustment to retained earnings.",
+                "**Example 3 — Mandatory exception (estimates):** At transition, an entity had estimated warranty provisions under previous GAAP. It cannot revise those estimates retrospectively unless there is objective evidence of error. New information received later is treated as a non-adjusting event.",
+                "**Example 4 — Reconciliations:** A first-time adopter must reconcile equity under previous GAAP to IFRS equity at transition date and at the end of the latest prior period. It also reconciles total comprehensive income for the latest prior period.",
+                "**Example 5 — Comparative information:** The first IFRS financial statements must include at least three statements of financial position (transition date, prior year-end, current year-end) and two of each other statement."
+            ]
         },
         "IFRS 2": {
             fullTitle: "Share-based Payment",
@@ -440,9 +450,16 @@
                 "Equity-settled share-based payments are measured at fair value at grant date.",
                 "The expense is recognised over the vesting period, with a corresponding increase in equity.",
                 "Cash-settled share-based payments are remeasured at each reporting date until settled.",
-                "Disclosures about the nature and extent of share-based payment arrangements are required."
+                "Disclosures about the nature and extent of share-based payment arrangements are required.",
+                "For equity-settled awards, fair value is not subsequently remeasured."
             ],
-            example: "**Example:** A company grants 1,000 share options to its CEO on 1 Jan 2025. Fair value per option = $5. Vesting period = 3 years. Each year it recognises an expense of $1,667 (1,000 × $5 ÷ 3) and increases equity (share-based payment reserve) by the same amount."
+            examples: [
+                "**Example 1 — Stock options:** A company grants 1,000 options to its CEO on 1 Jan 2025. Fair value per option = $5. Vesting period = 3 years. Each year it recognises an expense of $1,667 and increases equity (share-based payment reserve).",
+                "**Example 2 — Cash-settled SARs:** A company grants 500 stock appreciation rights (SARs) to employees. At grant date, fair value = $10 each. At year-end, fair value increases to $12. The company recognises a liability of $6,000 ($12 × 500) and an expense of $6,000.",
+                "**Example 3 — Non-employee awards:** A company issues shares to a consultant for services. The fair value of the shares issued is $20,000. The company recognises an expense of $20,000 and increases equity.",
+                "**Example 4 — Performance conditions:** An award vests only if revenue grows by 10% per year. At grant date, the company estimates the probability of vesting and measures fair value accordingly. Expense is recognised over the vesting period based on the estimated number of awards expected to vest.",
+                "**Example 5 — Modifications:** A company reprices options from $10 to $8 per share. The incremental fair value of the modification ($2) is recognised as additional expense over the remaining vesting period."
+            ]
         },
         "IFRS 3": {
             fullTitle: "Business Combinations",
@@ -450,9 +467,16 @@
                 "All business combinations are accounted for using the acquisition method.",
                 "The acquirer measures identifiable assets acquired and liabilities assumed at acquisition-date fair value.",
                 "Any excess of consideration transferred over the net fair value is recognised as goodwill.",
-                "Bargain purchase (negative goodwill) is recognised immediately in profit or loss."
+                "Bargain purchase (negative goodwill) is recognised immediately in profit or loss.",
+                "Non-controlling interests are measured either at fair value or proportionate share of net assets."
             ],
-            example: "**Example:** Company A pays $10 million for Company B. Fair value of B's net identifiable assets is $8 million. Company A recognises goodwill of $2 million ($10m – $8m)."
+            examples: [
+                "**Example 1 — Basic acquisition:** Company A pays $10 million for Company B. Fair value of B's net identifiable assets is $8 million. Goodwill of $2 million is recognised.",
+                "**Example 2 — Bargain purchase:** Company A pays $5 million for Company B. Fair value of net assets is $6 million. A gain of $1 million is recognised immediately in profit or loss.",
+                "**Example 3 — Contingent consideration:** Company A agrees to pay an additional $1 million if Company B achieves a profit target. At acquisition date, the fair value of the contingent consideration is estimated at $700,000. This is included in consideration transferred.",
+                "**Example 4 — NCI measurement:** Company A acquires 80% of Company B for $8 million. The fair value of Company B is $9.5 million. NCI is measured at fair value of $1.9 million (20% × $9.5m). Total consideration = $9.9m.",
+                "**Example 5 — Acquired intangible assets:** Company B has a customer list not recognised under previous GAAP. At acquisition, the customer list is valued at $500,000 and recognised as an intangible asset in the consolidated accounts."
+            ]
         },
         "IFRS 5": {
             fullTitle: "Non-current Assets Held for Sale and Discontinued Operations",
@@ -460,9 +484,16 @@
                 "Assets are classified as held for sale if their carrying amount will be recovered principally through a sale transaction.",
                 "They must be available for immediate sale and the sale must be highly probable.",
                 "Held-for-sale assets are measured at the lower of carrying amount and fair value less costs to sell.",
-                "No depreciation is charged on such assets, and they are presented separately."
+                "No depreciation is charged on such assets.",
+                "They are presented separately on the balance sheet and statement of comprehensive income."
             ],
-            example: "**Example:** A company plans to sell a factory (carrying amount $2m, fair value less costs to sell $1.8m). It writes the asset down by $200,000 and presents it as 'held for sale' separately on the balance sheet. Depreciation stops."
+            examples: [
+                "**Example 1 — Write-down:** A company plans to sell a factory (carrying amount $2m, fair value less costs to sell $1.8m). It writes the asset down by $200,000 and presents it as 'held for sale' separately.",
+                "**Example 2 — No depreciation:** A machine held for sale had been depreciated at $10,000 per year. Once classified as held for sale, depreciation stops. The carrying amount remains at $80,000.",
+                "**Example 3 — Discontinued operation:** A company sells its entire retail division. The division's results are presented separately as 'discontinued operations' in the income statement, net of tax.",
+                "**Example 4 — Reclassification back:** A company classified a building as held for sale, but the sale fell through and it no longer meets the criteria. It reclassifies the building back to PPE and measures it at the lower of its carrying amount before classification (adjusted for depreciation) and its recoverable amount.",
+                "**Example 5 — Gain on disposal:** A held-for-sale asset has a carrying amount of $500,000 and is sold for $550,000. A gain of $50,000 is recognised in profit or loss."
+            ]
         },
         "IFRS 6": {
             fullTitle: "Exploration for and Evaluation of Mineral Resources",
@@ -470,9 +501,16 @@
                 "Allows entities to develop an accounting policy for exploration and evaluation assets.",
                 "Assets are initially measured at cost and subsequently tested for impairment.",
                 "Impairment testing is based on IFRS 5 or IAS 36 depending on the policy.",
-                "Disclosures about exploration and evaluation expenditures are required."
+                "Disclosures about exploration and evaluation expenditures are required.",
+                "The standard is an interim standard, intended to be replaced eventually."
             ],
-            example: "**Example:** A mining company spends $500,000 exploring a new site. Under IFRS 6, it capitalises the amount as an exploration asset. At year-end, if the site shows no viable mineral deposits, it impairs the asset to zero and recognises a $500,000 loss."
+            examples: [
+                "**Example 1 — Capitalisation:** A mining company spends $500,000 exploring a new site. Under IFRS 6, it capitalises the amount as an exploration asset.",
+                "**Example 2 — Impairment:** At year-end, the site shows no viable mineral deposits. The company impairs the asset to zero and recognises a $500,000 loss.",
+                "**Example 3 — Accounting policy choice:** A company can choose to expense exploration costs as incurred or capitalise them. It must apply the policy consistently to all similar expenditures.",
+                "**Example 4 — Disposal:** A company sells an exploration asset for $300,000. The carrying amount is $250,000. A gain of $50,000 is recognised.",
+                "**Example 5 — Classification:** Exploration assets are presented as a separate class of non-current assets on the balance sheet, not as part of PPE or intangibles."
+            ]
         },
         "IFRS 7": {
             fullTitle: "Financial Instruments: Disclosures",
@@ -480,9 +518,16 @@
                 "Requires disclosures about the significance of financial instruments for an entity's financial position and performance.",
                 "Qualitative and quantitative disclosures about risks arising from financial instruments (credit, liquidity, market risk).",
                 "Disclosures about the nature and extent of risks and how they are managed.",
-                "Includes a three-level fair value hierarchy for financial instruments."
+                "Includes a three-level fair value hierarchy for financial instruments.",
+                "Requires disclosures about the allowance for expected credit losses."
             ],
-            example: "**Example:** A bank holds a portfolio of loans. It must disclose the total carrying amount, the credit quality, past-due amounts, and the maximum exposure to credit risk. It also explains how it manages liquidity risk."
+            examples: [
+                "**Example 1 — Credit risk:** A bank holds a portfolio of loans. It must disclose the total carrying amount, the credit quality, past-due amounts, and the maximum exposure to credit risk.",
+                "**Example 2 — Liquidity risk:** A company must disclose a maturity analysis of its financial liabilities, showing amounts due within 1 year, 1-5 years, and over 5 years.",
+                "**Example 3 — Market risk:** A company with foreign currency borrowings discloses a sensitivity analysis showing how profit or loss would change if exchange rates moved by 10%.",
+                "**Example 4 — Fair value hierarchy:** A company discloses that its financial assets include Level 1 (quoted prices), Level 2 (observable inputs), and Level 3 (unobservable inputs) measurements.",
+                "**Example 5 — Collateral:** A company discloses the carrying amount of financial assets pledged as collateral and the terms and conditions of the pledge."
+            ]
         },
         "IFRS 8": {
             fullTitle: "Operating Segments",
@@ -490,9 +535,16 @@
                 "Entities must disclose information about their operating segments.",
                 "Segments are based on internal reports regularly reviewed by the chief operating decision maker.",
                 "Disclosures include profit or loss, assets, liabilities and revenue for each reportable segment.",
-                "Reconciliations to the entity's financial statements are required."
+                "Reconciliations to the entity's financial statements are required.",
+                "The 'management approach' is used, so segments reflect how management runs the business."
             ],
-            example: "**Example:** A conglomerate has three divisions: Retail, Manufacturing and Logistics. It reports segment revenue and profit for each, and reconciles total segment profit to consolidated profit before tax."
+            examples: [
+                "**Example 1 — Segmentation:** A conglomerate has three divisions: Retail, Manufacturing and Logistics. It reports segment revenue and profit for each.",
+                "**Example 2 — Reconciliation:** Total segment profit is $500,000, but consolidated profit before tax is $450,000. The company reconciles the difference, e.g., unallocated corporate expenses of $50,000.",
+                "**Example 3 — Segment assets:** A company reports segment assets for each division. Total segment assets must reconcile to total assets on the balance sheet.",
+                "**Example 4 — Geographic information:** A company with operations in Europe and Asia discloses revenue and non-current assets split by geographic region, even if not organised by geography internally.",
+                "**Example 5 — Major customer:** If a single customer accounts for more than 10% of revenue, the company discloses that fact and the total revenue from that customer, without naming the customer."
+            ]
         },
         "IFRS 9": {
             fullTitle: "Financial Instruments",
@@ -500,9 +552,16 @@
                 "Classification of financial assets depends on the business model and contractual cash flow characteristics.",
                 "Financial assets are measured at amortised cost, fair value through OCI, or fair value through profit or loss.",
                 "Expected credit losses (ECL) model applies to impairment of financial assets.",
-                "Hedge accounting aligns the accounting for hedging instruments with hedged items."
+                "Hedge accounting aligns the accounting for hedging instruments with hedged items.",
+                "Financial liabilities are generally measured at amortised cost unless designated at FVTPL."
             ],
-            example: "**Example:** A company buys a bond for $1,000 with the intention of collecting contractual cash flows (hold-to-collect). It measures the bond at amortised cost. If the issuer's credit risk increases significantly, the company recognises an expected credit loss allowance, say $50, reducing the carrying amount to $950."
+            examples: [
+                "**Example 1 — Amortised cost:** A company buys a bond for $1,000 with the intention of collecting contractual cash flows. It measures the bond at amortised cost. Interest income is recognised using the effective interest method.",
+                "**Example 2 — Fair value through OCI:** A company holds a bond both to collect cash flows and to sell. Changes in fair value are recognised in OCI, and on disposal, gains or losses are recycled to profit or loss.",
+                "**Example 3 — Fair value through P&L:** A company holds shares for trading. Changes in fair value are recognised immediately in profit or loss.",
+                "**Example 4 — Expected credit loss:** A company has a receivable of $100,000. It estimates a 2% probability of default. It recognises an ECL allowance of $2,000, reducing the carrying amount to $98,000.",
+                "**Example 5 — Hedge accounting:** A company hedges its exposure to interest rate changes on a floating-rate loan using an interest rate swap. It applies cash flow hedge accounting, recognising the effective portion of the swap's gain or loss in OCI."
+            ]
         },
         "IFRS 10": {
             fullTitle: "Consolidated Financial Statements",
@@ -510,9 +569,16 @@
                 "A parent must present consolidated financial statements in which it consolidates all subsidiaries.",
                 "Control exists when the parent has power over the investee, exposure to variable returns, and ability to use power to affect returns.",
                 "Intra-group transactions and balances are eliminated in full.",
-                "Non-controlling interests are presented separately within equity."
+                "Non-controlling interests are presented separately within equity.",
+                "A parent that is an investment entity may be exempt from consolidation."
             ],
-            example: "**Example:** Parent owns 80% of Subsidiary. Subsidiary reports revenue of $1m and expenses of $600k. In consolidation, Parent combines line-by-line revenue and expenses; the $400k profit is split: $320k to owners of Parent and $80k to non-controlling interests."
+            examples: [
+                "**Example 1 — Basic consolidation:** Parent owns 80% of Subsidiary. Subsidiary reports revenue of $1m and expenses of $600k. In consolidation, Parent combines line-by-line revenue and expenses; the $400k profit is split: $320k to owners of Parent and $80k to NCI.",
+                "**Example 2 — Intra-group elimination:** Parent sells goods to Subsidiary for $100,000, with a profit of $20,000. If the goods are still in Subsidiary's inventory at year-end, the $20,000 profit is eliminated from consolidated revenue and inventory.",
+                "**Example 3 — Non-controlling interests:** Subsidiary has net assets of $500,000. NCI owns 20%, so NCI in equity is $100,000. If Subsidiary earns $50,000 profit, NCI's share is $10,000.",
+                "**Example 4 — Loss of control:** Parent sells 30% of its 80% holding, retaining 50% control. The transaction is accounted for as an equity transaction, with no gain or loss recognised in profit or loss.",
+                "**Example 5 — Consolidation exemption:** A parent that is a wholly-owned subsidiary of another entity may be exempt from preparing consolidated financial statements if certain conditions are met."
+            ]
         },
         "IFRS 11": {
             fullTitle: "Joint Arrangements",
@@ -520,9 +586,16 @@
                 "A joint arrangement is either a joint operation or a joint venture.",
                 "Joint operations: parties recognise their share of assets, liabilities, revenues and expenses.",
                 "Joint ventures: parties use the equity method (IAS 28).",
-                "The classification depends on the rights and obligations of the parties."
+                "The classification depends on the rights and obligations of the parties.",
+                "A joint arrangement is a contractual arrangement whereby two or more parties have joint control."
             ],
-            example: "**Example:** Two companies form a joint venture (separate legal entity) and each has 50% ownership. They use equity method: initially recognise investment at cost, then adjust for share of profit or loss and dividends received."
+            examples: [
+                "**Example 1 — Joint operation:** Two companies jointly operate an oil pipeline. Each recognises its share of the pipeline's assets and liabilities, and its share of revenue and expenses.",
+                "**Example 2 — Joint venture:** Two companies form a separate legal entity to develop a property. Each owns 50%. They use the equity method: initially recognise investment at cost, then adjust for share of profit or loss and dividends.",
+                "**Example 3 — Joint control:** Decisions about relevant activities require unanimous consent of the parties sharing control. If one party can make decisions unilaterally, it is not a joint arrangement.",
+                "**Example 4 — Equity method losses:** A joint venture makes a loss of $100,000. The investor's share is $50,000. It reduces the investment carrying amount by $50,000 and recognises a loss of $50,000 in profit or loss.",
+                "**Example 5 — Classification change:** A joint venture becomes a joint operation due to a change in contractual terms. The entity remeasures its interest and recognises any gain or loss."
+            ]
         },
         "IFRS 12": {
             fullTitle: "Disclosure of Interests in Other Entities",
@@ -530,9 +603,16 @@
                 "Requires disclosures about significant judgements and assumptions in determining control, joint control or significant influence.",
                 "Disclosures about interests in subsidiaries, joint arrangements, associates and unconsolidated structured entities.",
                 "Includes nature of risks associated with interests in consolidated and unconsolidated entities.",
-                "Summarised financial information for material associates and joint ventures."
+                "Summarised financial information for material associates and joint ventures.",
+                "Disclosures about restrictions on consolidated assets and liabilities."
             ],
-            example: "**Example:** A company holds 30% of Associate A. It must disclose Associate A's name, nature of relationship, ownership interest, and summarised financial information (total assets, liabilities, revenue, profit)."
+            examples: [
+                "**Example 1 — Associate disclosure:** A company holds 30% of Associate A. It discloses Associate A's name, nature of relationship, ownership interest, and summarised financial information (total assets, liabilities, revenue, profit).",
+                "**Example 2 — Subsidiary restrictions:** A parent discloses that a subsidiary's assets of $1m are restricted due to regulatory requirements and cannot be transferred to the parent.",
+                "**Example 3 — Significant judgements:** A company discloses the judgements made in determining that it controls an entity even though it owns less than 50% of the voting rights (e.g., due to contractual arrangements).",
+                "**Example 4 — Unconsolidated structured entities:** A bank discloses its interests in securitisation vehicles that it does not consolidate, including the nature of the interests and maximum exposure to loss.",
+                "**Example 5 — NCI information:** A parent with a 60%-owned subsidiary discloses summarised financial information about the subsidiary, including dividends paid to NCI."
+            ]
         },
         "IFRS 13": {
             fullTitle: "Fair Value Measurement",
@@ -540,9 +620,16 @@
                 "Defines fair value as the price that would be received to sell an asset or paid to transfer a liability in an orderly transaction.",
                 "Establishes a three-level fair value hierarchy (Level 1, 2, 3) based on inputs.",
                 "Requires disclosures about valuation techniques and inputs used.",
-                "Fair value is a market-based measurement, not an entity-specific measurement."
+                "Fair value is a market-based measurement, not an entity-specific measurement.",
+                "The transaction is assumed to occur in the principal market, or most advantageous market if no principal market."
             ],
-            example: "**Example:** A company owns shares listed on an active stock exchange. The quoted price of $25 per share is a Level 1 input. If the shares were unlisted, the company might use a valuation model with unobservable inputs (Level 3) to estimate fair value."
+            examples: [
+                "**Example 1 — Level 1:** A company owns shares listed on an active stock exchange. The quoted price of $25 per share is a Level 1 input.",
+                "**Example 2 — Level 2:** A company holds an interest rate swap. Fair value is determined using observable yield curves and credit spreads. These are Level 2 inputs.",
+                "**Example 3 — Level 3:** A company holds unlisted shares. It uses a discounted cash flow model with unobservable inputs (e.g., revenue growth rate). This is a Level 3 measurement.",
+                "**Example 4 — Principal market:** A company owns a commodity traded on two exchanges. The exchange with the highest volume and activity is the principal market. Fair value is based on prices in that market.",
+                "**Example 5 — Fair value of a liability:** A company has a liability for a written put option. Fair value is the price that would be paid to transfer the liability to a market participant, considering the risk of non-performance."
+            ]
         },
         "IFRS 14": {
             fullTitle: "Regulatory Deferral Accounts",
@@ -550,210 +637,18 @@
                 "Interim standard allowing first-time adopters to continue recognising regulatory deferral account balances.",
                 "Applies only to entities that are rate-regulated and currently recognise such balances under previous GAAP.",
                 "Requires presentation of regulatory deferral account balances separately.",
-                "Disclosures about the nature and risks of rate regulation."
+                "Disclosures about the nature and risks of rate regulation.",
+                "The standard is an interim standard, intended to be replaced by a comprehensive standard."
             ],
-            example: "**Example:** A utility company is rate-regulated. It defers $100,000 of costs that it expects to recover through future rate increases. Under IFRS 14, it presents these as 'regulatory deferral account debit balances' on the balance sheet."
+            examples: [
+                "**Example 1 — Deferral of costs:** A utility company defers $100,000 of costs that it expects to recover through future rate increases. It presents these as 'regulatory deferral account debit balances'.",
+                "**Example 2 — Regulatory liability:** A utility company has charged customers $50,000 more than its allowed return. It recognises a 'regulatory deferral account credit balance' (liability) for the amount that will be refunded.",
+                "**Example 3 — Election:** A first-time adopter elects to continue its previous GAAP accounting for regulatory deferral accounts. It must apply IFRS 14 consistently to all such balances.",
+                "**Example 4 — Separate presentation:** Regulatory deferral account balances are presented separately on the balance sheet, after non-current assets and liabilities but before equity.",
+                "**Example 5 — Disclosures:** The entity discloses the nature of the rate regulation, the basis on which balances are recognised, and the risks associated with future rate recovery."
+            ]
         },
         "IFRS 15": {
             fullTitle: "Revenue from Contracts with Customers",
             literature: [
-                "Five-step model: 1) Identify the contract, 2) Identify performance obligations, 3) Determine transaction price, 4) Allocate transaction price, 5) Recognise revenue when performance obligation is satisfied.",
-                "Revenue is recognised when control of goods or services transfers to the customer.",
-                "Variable consideration is estimated and included in the transaction price if it is highly probable there will not be a significant reversal.",
-                "Contract costs are capitalised if they are incremental and expected to be recovered."
-            ],
-            example: "**Example:** A software company sells a licence for $30,000 plus 3 years of support for $6,000 (total $36,000). The licence is transferred immediately; support is provided over time. It allocates $30,000 to the licence (recognised at a point in time) and $6,000 to support (recognised over 3 years, $2,000 per year)."
-        },
-        "IFRS 16": {
-            fullTitle: "Leases",
-            literature: [
-                "Lessees recognise a right-of-use asset and a lease liability for almost all leases.",
-                "The lease liability is measured at the present value of lease payments.",
-                "The right-of-use asset is initially measured at cost and subsequently depreciated.",
-                "Lessors classify leases as finance or operating leases."
-            ],
-            example: "**Example:** A company leases an office for 10 years with annual payments of $50,000, starting immediately. The present value of lease payments (using a discount rate) is $400,000. It recognises a right-of-use asset of $400,000 and a lease liability of $400,000. Each year it depreciates the asset and recognises interest on the liability."
-        },
-        "IFRS 17": {
-            fullTitle: "Insurance Contracts",
-            literature: [
-                "Insurance contracts are measured using a current fulfilment value approach.",
-                "The liability includes fulfilment cash flows (estimates of future cash flows, discounting, risk adjustment) and a contractual service margin (CSM).",
-                "CSM represents unearned profit and is recognised over the coverage period.",
-                "Insurance revenue and expenses are presented separately in the income statement."
-            ],
-            example: "**Example:** An insurer issues a 5-year property policy. It expects to pay $800,000 in claims and expenses, and receives $1,000,000 in premiums. The present value of fulfilment cash flows is $750,000, and the risk adjustment is $50,000. The CSM is $200,000 ($1,000,000 – $750,000 – $50,000), recognised over 5 years."
-        },
-        "IFRS 19": {
-            fullTitle: "Subsidiaries without Public Accountability: Disclosures",
-            literature: [
-                "An eligible subsidiary can apply reduced disclosure requirements.",
-                "Eligible if the subsidiary does not have public accountability and its parent prepares consolidated financial statements under IFRS.",
-                "Reduces disclosure burden while still applying all recognition and measurement principles.",
-                "The subsidiary must disclose that it has applied IFRS 19."
-            ],
-            example: "**Example:** A small subsidiary of a listed parent company is not itself publicly accountable. It applies IFRS 19 and, instead of providing extensive fair value disclosures, it provides reduced disclosures about financial instruments, as permitted by the standard."
-        }
-    };
-
-    // Fallback for standards that might not have details (e.g. IAS, but we have only IFRS here)
-    // Also IFRS 18 already included, plus we have all others.
-
-    // ----------------------------------------------------------------
-    // 3. RENDER CATEGORIES AND CARDS
-    // ----------------------------------------------------------------
-    const categoryGrid = document.getElementById('categoryGrid');
-
-    categories.forEach(cat => {
-        const section = document.createElement('div');
-        section.className = 'category-section';
-
-        const title = document.createElement('div');
-        title.className = 'category-title';
-        title.innerHTML = `${cat.name} <span class="badge">${cat.standards.length} standards</span>`;
-        section.appendChild(title);
-
-        const grid = document.createElement('div');
-        grid.className = 'standards-grid';
-
-        cat.standards.forEach(std => {
-            const card = document.createElement('div');
-            card.className = 'standard-card';
-            card.dataset.code = std.code;
-            card.innerHTML = `
-                <div class="code">${std.code} <span>IFRS</span></div>
-                <div class="short-title">${std.title}</div>
-            `;
-            card.addEventListener('click', () => openModal(std.code));
-            grid.appendChild(card);
-        });
-
-        section.appendChild(grid);
-        categoryGrid.appendChild(section);
-    });
-
-    // ----------------------------------------------------------------
-    // 4. MODAL LOGIC
-    // ----------------------------------------------------------------
-    const overlay = document.getElementById('modalOverlay');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalBody = document.getElementById('modalBody');
-    const closeBtn = document.getElementById('closeModalBtn');
-
-    function openModal(code) {
-        const detail = standardDetails[code];
-        if (!detail) {
-            // fallback: show minimal content
-            modalTitle.innerHTML = `${code} <small>Standard</small>`;
-            modalBody.innerHTML = `<p>Detailed literature for ${code} is not available in this demo, but the standard is part of the active IFRS framework.</p>`;
-            overlay.classList.add('active');
-            return;
-        }
-
-        // Build title
-        modalTitle.innerHTML = `${code} <small>${detail.fullTitle}</small>`;
-
-        // Build body
-        let html = '';
-
-        // literature section
-        html += `<h3>📄 Full literature (simplified)</h3>`;
-        html += `<ul>`;
-        detail.literature.forEach(item => {
-            html += `<li>${item}</li>`;
-        });
-        html += `</ul>`;
-
-        // example box
-        html += `<div class="example-box">`;
-        html += `<strong>🧾 Simple accounting example</strong><br>`;
-        // convert **bold** markdown to <strong>
-        let exampleText = detail.example.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-        html += `<p style="margin-top:0.6rem;">${exampleText}</p>`;
-        html += `</div>`;
-
-        // optional note
-        if (code === 'IFRS 18') {
-            html += `<div class="note">⚠️ IFRS 18 is effective for annual reporting periods beginning on or after 1 January 2027. Early application is permitted.</div>`;
-        }
-        if (code === 'IFRS 17') {
-            html += `<div class="note">⚠️ IFRS 17 is effective for annual periods beginning on or after 1 January 2023.</div>`;
-        }
-
-        modalBody.innerHTML = html;
-
-        // show modal
-        overlay.classList.add('active');
-    }
-
-    function closeModal() {
-        overlay.classList.remove('active');
-    }
-
-    closeBtn.addEventListener('click', closeModal);
-    overlay.addEventListener('click', (e) => {
-        if (e.target === overlay) closeModal();
-    });
-
-    // close with Escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && overlay.classList.contains('active')) {
-            closeModal();
-        }
-    });
-
-    // also handle any missing standards if clicked (e.g. IFRS 8 not in categories but we have detail)
-    // We already have IFRS 8 in details but not in categories. Let's add it to "Presentation & Framework"? 
-    // Actually IFRS 8 is operating segments, could be under presentation. But it's fine — we didn't list it. 
-    // To be thorough, let's add IFRS 8 to the "Presentation & Framework" category quickly.
-    // I'll modify the categories array — but it's already declared. We'll inject IFRS 8 manually into the grid after render.
-    // For simplicity, I'll add a small script to include IFRS 8 in the first category.
-    // Better: adjust categories array before rendering. Since it's JS, we can modify.
-
-    // Re-render approach: I'll patch after initial render. Let's just add IFRS 8 card to the first category.
-    // But we need it to appear in the correct category. Let's modify the categories array at runtime.
-    // I'll do a quick fix: add IFRS 8 to "Presentation & Framework" (makes sense) and re-render.
-    // However, the render already ran. I'll push IFRS 8 into categories and re-run the render function.
-
-    // To avoid complexity, I'll add it to the first category now and re-render everything.
-    // I'll re-define categories properly.
-
-    // Let's do a clean re-render with IFRS 8 included.
-    // I'll rewrite the categories array inside a function and call it.
-
-    // (I'll re-define categories to include IFRS 8)
-    // But since the code already ran, I'll just manipulate DOM to add IFRS 8 card.
-    // Quick fix: add IFRS 8 card manually to the first .standards-grid.
-    // It's better to keep code clean, but for this demo, I'll add it programmatically.
-
-    // After initial render, add IFRS 8 to the first category section
-    setTimeout(() => {
-        const firstGrid = document.querySelector('.category-section .standards-grid');
-        if (firstGrid) {
-            // check if IFRS 8 already exists (it doesn't)
-            const existing = Array.from(firstGrid.children).some(card => card.dataset.code === 'IFRS 8');
-            if (!existing) {
-                const card = document.createElement('div');
-                card.className = 'standard-card';
-                card.dataset.code = 'IFRS 8';
-                card.innerHTML = `
-                    <div class="code">IFRS 8 <span>IFRS</span></div>
-                    <div class="short-title">Operating Segments</div>
-                `;
-                card.addEventListener('click', () => openModal('IFRS 8'));
-                firstGrid.appendChild(card);
-                // update badge count
-                const badge = firstGrid.closest('.category-section').querySelector('.badge');
-                if (badge) {
-                    const count = firstGrid.children.length;
-                    badge.textContent = `${count} standards`;
-                }
-            }
-        }
-    }, 50);
-
-    // Also ensure IFRS 8 detail exists (yes, it does)
-    // End of script.
-</script>
-</body>
-</html>
+                "Five-step model: 1) Identify the contract, 2) Identify performance obligations, 3) Determine transaction price, 4) Allocate transaction price, 5) Recognise revenue
