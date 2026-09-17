@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IFRS Expert Guide · 5 examples per standard</title>
+    <title>IFRS Expert Guide · Literature · 5 Examples · Interview Answer</title>
     <style>
         * {
             box-sizing: border-box;
@@ -276,6 +276,53 @@
             margin-bottom: 0;
         }
 
+        /* interview answer box */
+        .interview-box {
+            background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
+            border-radius: 1.2rem;
+            padding: 1.3rem 1.5rem;
+            margin: 0.8rem 0 1.2rem;
+            border-left: 6px solid #2e7d32;
+            font-size: 1rem;
+            box-shadow: 0 4px 12px rgba(46, 125, 50, 0.12);
+            position: relative;
+        }
+
+        .interview-box::before {
+            content: "🎯 Interview Answer";
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #1b5e20;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 0.6rem;
+        }
+
+        .interview-box p {
+            margin-bottom: 0.6rem;
+            color: #1b3a1b;
+            font-weight: 450;
+        }
+
+        .interview-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .interview-box strong {
+            color: #1b5e20;
+            font-weight: 700;
+        }
+
+        .interview-box em {
+            color: #2e7d32;
+            font-style: normal;
+            font-weight: 600;
+            background: rgba(46, 125, 50, 0.1);
+            padding: 0.1rem 0.3rem;
+            border-radius: 4px;
+        }
+
         .note {
             background: #fef8e7;
             border-radius: 1rem;
@@ -308,6 +355,9 @@
             .standards-grid {
                 grid-template-columns: 1fr 1fr;
             }
+            .interview-box {
+                padding: 1rem;
+            }
         }
 
         @media (max-width: 420px) {
@@ -320,12 +370,10 @@
 <body>
 <div class="app-container">
     <h1>📘 IFRS Expert Guide</h1>
-    <div class="subhead">Click any standard to open its full literature and five plain‑language accounting examples.</div>
+    <div class="subhead">Click any standard to open its literature, five plain‑language examples, and a ready‑to‑use interview answer.</div>
 
-    <div class="category-grid" id="categoryGrid">
-        <!-- injected -->
-    </div>
-    <footer>Active IFRS & IAS standards — comprehensive examples for practical understanding</footer>
+    <div class="category-grid" id="categoryGrid"></div>
+    <footer>Active IFRS & IAS standards — comprehensive examples & interview-ready explanations</footer>
 </div>
 
 <div class="modal-overlay" id="modalOverlay">
@@ -334,15 +382,13 @@
             <h2 id="modalTitle">IFRS 9 <small>Financial Instruments</small></h2>
             <button class="close-btn" id="closeModalBtn" aria-label="Close">&times;</button>
         </div>
-        <div class="modal-body" id="modalBody">
-            <!-- dynamic -->
-        </div>
+        <div class="modal-body" id="modalBody"></div>
     </div>
 </div>
 
 <script>
     // ------------------------------------------------------------------
-    // 1. CATEGORIES (with all IFRS + selected IAS)
+    // 1. CATEGORIES
     // ------------------------------------------------------------------
     const categories = [
         {
@@ -424,7 +470,7 @@
     ];
 
     // ------------------------------------------------------------------
-    // 2. COMPREHENSIVE DETAILS: literature + 5 examples each
+    // 2. DETAILS: literature + 5 examples + interview answer for each
     // ------------------------------------------------------------------
     const details = {
         "IFRS 1": {
@@ -438,28 +484,102 @@
             ],
             examples: [
                 "**Example 1 — Opening balance sheet:** A private company adopts IFRS for the first time on 1 Jan 2026. On transition date (1 Jan 2025), it restates PPE to fair value, increasing carrying amount by $50,000. The $50,000 is adjusted against opening retained earnings.",
-                "**Example 2 — Deemed cost exemption:** A company uses fair value as deemed cost for a building. Previously the building was carried at $200,000 under local GAAP, but fair value is $350,000. It uses the $350,000 as the starting IFRS carrying amount, with the $150,000 adjustment to retained earnings.",
-                "**Example 3 — Mandatory exception (estimates):** At transition, an entity had estimated warranty provisions under previous GAAP. It cannot revise those estimates retrospectively unless there is objective evidence of error. New information received later is treated as a non-adjusting event.",
-                "**Example 4 — Reconciliations:** A first-time adopter must reconcile equity under previous GAAP to IFRS equity at transition date and at the end of the latest prior period. It also reconciles total comprehensive income for the latest prior period.",
-                "**Example 5 — Comparative information:** The first IFRS financial statements must include at least three statements of financial position (transition date, prior year-end, current year-end) and two of each other statement."
-            ]
+                "**Example 2 — Deemed cost exemption:** A company uses fair value as deemed cost for a building. Previously the building was carried at $200,000 under local GAAP, but fair value is $350,000. It uses the $350,000 as the starting IFRS carrying amount.",
+                "**Example 3 — Mandatory exception (estimates):** At transition, an entity had estimated warranty provisions under previous GAAP. It cannot revise those estimates retrospectively unless there is objective evidence of error.",
+                "**Example 4 — Reconciliations:** A first-time adopter must reconcile equity under previous GAAP to IFRS equity at transition date and at the end of the latest prior period.",
+                "**Example 5 — Comparative information:** The first IFRS financial statements must include at least three statements of financial position and two of each other statement."
+            ],
+            interviewAnswer: "IFRS 1 is like the <em>'onboarding manual'</em> when a company switches to IFRS for the first time. Think of it as <em>moving into a new house</em> — you need to decide what to bring, what to leave behind, and how to set up your opening balance sheet. The key rule is: <em>'Start fresh at the transition date.'</em> You restate everything to IFRS, adjust retained earnings, and explain the differences to investors. Optional exemptions make the move easier, but mandatory exceptions keep the numbers honest. Simply put: <em>'It's the bridge between old GAAP and IFRS.'</em>"
         },
-        "IFRS 2": {
-            fullTitle: "Share-based Payment",
+        "IFRS 18": {
+            fullTitle: "Presentation and Disclosure in Financial Statements (effective 2027)",
             literature: [
-                "Equity-settled share-based payments are measured at fair value at grant date.",
-                "The expense is recognised over the vesting period, with a corresponding increase in equity.",
-                "Cash-settled share-based payments are remeasured at each reporting date until settled.",
-                "Disclosures about the nature and extent of share-based payment arrangements are required.",
-                "For equity-settled awards, fair value is not subsequently remeasured."
+                "Introduces three new categories in the income statement: operating, investing and financing.",
+                "Requires mandatory subtotals, e.g., operating profit and profit before financing and income taxes.",
+                "Provides enhanced guidance on aggregation and disaggregation of information.",
+                "Replaces IAS 1, but many presentation principles remain similar.",
+                "Aims to improve comparability and transparency across entities."
             ],
             examples: [
-                "**Example 1 — Stock options:** A company grants 1,000 options to its CEO on 1 Jan 2025. Fair value per option = $5. Vesting period = 3 years. Each year it recognises an expense of $1,667 and increases equity (share-based payment reserve).",
-                "**Example 2 — Cash-settled SARs:** A company grants 500 stock appreciation rights (SARs) to employees. At grant date, fair value = $10 each. At year-end, fair value increases to $12. The company recognises a liability of $6,000 ($12 × 500) and an expense of $6,000.",
-                "**Example 3 — Non-employee awards:** A company issues shares to a consultant for services. The fair value of the shares issued is $20,000. The company recognises an expense of $20,000 and increases equity.",
-                "**Example 4 — Performance conditions:** An award vests only if revenue grows by 10% per year. At grant date, the company estimates the probability of vesting and measures fair value accordingly. Expense is recognised over the vesting period based on the estimated number of awards expected to vest.",
-                "**Example 5 — Modifications:** A company reprices options from $10 to $8 per share. The incremental fair value of the modification ($2) is recognised as additional expense over the remaining vesting period."
-            ]
+                "**Example 1 — Operating profit subtotal:** A retail company reports revenue of $1m, cost of sales $600k, and operating expenses $200k. It presents operating profit of $200k as a mandatory subtotal.",
+                "**Example 2 — Financing category:** Interest expense of $10,000 and interest income of $3,000 are presented in the financing category, showing net financing cost of $7,000.",
+                "**Example 3 — Investing category:** A company sells a subsidiary and recognises a gain of $50,000. This gain is presented in the investing category, separately from operating profit.",
+                "**Example 4 — Disaggregation:** A company has material foreign exchange gains and losses. It must disaggregate these into operating, investing, and financing categories where applicable.",
+                "**Example 5 — Comparative restatement:** On transition to IFRS 18, entities restate comparative periods to comply with the new presentation requirements."
+            ],
+            interviewAnswer: "IFRS 18 is the <em>'new rulebook for the income statement'</em> from 2027. Imagine your income statement as a <em>three-drawer filing cabinet</em>: operating, investing, and financing. IFRS 18 forces you to put every item in the right drawer and show clear subtotals like <em>'operating profit.'</em> It's about <em>consistency and transparency</em> — so investors can compare apples to apples. In an interview, say: <em>'It replaces IAS 1, introduces mandatory subtotals, and makes the income statement more structured and comparable.'</em>"
+        },
+        "IAS 1": {
+            fullTitle: "Presentation of Financial Statements",
+            literature: [
+                "Sets out the overall requirements for presenting financial statements, including structure and minimum content.",
+                "Financial statements must present fairly the financial position, financial performance and cash flows.",
+                "Requires a statement of financial position, statement of profit or loss and OCI, statement of changes in equity, and statement of cash flows.",
+                "Going concern, accrual basis, and consistency of presentation are fundamental principles.",
+                "Comparative information for the preceding period must be presented."
+            ],
+            examples: [
+                "**Example 1 — Statement of financial position:** A company presents current and non-current assets and liabilities separately, unless a liquidity presentation is more relevant.",
+                "**Example 2 — Other comprehensive income:** A company with a revaluation surplus of $30,000 presents this in OCI, not in profit or loss.",
+                "**Example 3 — Going concern:** Management assesses that the entity will continue in operation for at least 12 months. If not, the going concern basis is not used.",
+                "**Example 4 — Materiality:** A company with a small stationery expense of $100 aggregates it with other administrative expenses, as it is not material.",
+                "**Example 5 — Statement of changes in equity:** A company presents opening equity, total comprehensive income, dividends paid, and closing equity for the period."
+            ],
+            interviewAnswer: "IAS 1 is the <em>'house style guide'</em> for financial statements. It tells you <em>what goes where</em> and <em>how to present it fairly</em>. Think of it as the <em>foundation of a building</em> — it doesn't tell you what business to do, but it ensures everything is structured, comparable, and transparent. Key concepts: <em>going concern, accrual basis, consistency, materiality, and comparatives</em>. In an interview, say: <em>'IAS 1 ensures financial statements are presented fairly and consistently, with all the required components like the balance sheet, income statement, changes in equity, and cash flows.'</em>"
+        },
+        "IAS 8": {
+            fullTitle: "Accounting Policies, Changes in Accounting Estimates and Errors",
+            literature: [
+                "Sets criteria for selecting and applying accounting policies.",
+                "Changes in accounting policies are applied retrospectively, with restatement of comparatives.",
+                "Changes in accounting estimates are applied prospectively.",
+                "Material prior period errors are corrected retrospectively.",
+                "Disclosures about changes in policies, estimates and errors are required."
+            ],
+            examples: [
+                "**Example 1 — Change in policy:** A company changes from FIFO to weighted average inventory costing. It restates prior period financial statements as if the new policy had always been applied.",
+                "**Example 2 — Change in estimate:** A company revises the useful life of a machine from 10 to 8 years. The change is applied prospectively, affecting current and future depreciation.",
+                "**Example 3 — Prior period error:** A company discovers that it understated revenue by $50,000 in the prior year. It restates the prior year comparatives and adjusts opening retained earnings.",
+                "**Example 4 — New IFRS adopted:** A company adopts a new IFRS that requires retrospective application. It restates comparatives unless transitional provisions allow otherwise.",
+                "**Example 5 — Disclosure:** A company discloses the nature and effect of a change in accounting estimate on current and future periods."
+            ],
+            interviewAnswer: "IAS 8 is the <em>'rulebook for changing your mind'</em> in accounting. It answers: <em>What if I change a policy? What if I revise an estimate? What if I made an error?</em> The golden rule is: <em>Policy changes = look back (retrospective). Estimate changes = look forward (prospective). Errors = fix the past (restate).</em> Think of it as <em>'accounting hygiene'</em> — it keeps the financials clean and comparable. In an interview: <em>'IAS 8 ensures consistency and transparency when accounting policies, estimates, or errors affect the financial statements.'</em>"
+        },
+        "IAS 10": {
+            fullTitle: "Events after the Reporting Period",
+            literature: [
+                "Distinguishes between adjusting events (provide evidence of conditions at the reporting date) and non-adjusting events.",
+                "Adjusting events require adjustment of the financial statements.",
+                "Non-adjusting events are disclosed if material.",
+                "Dividends declared after the reporting period are not recognised as a liability.",
+                "Going concern issues arising after the reporting period may require disclosure."
+            ],
+            examples: [
+                "**Example 1 — Adjusting event:** A customer goes bankrupt after the reporting date, confirming a receivable was impaired at year-end. The receivable is written down.",
+                "**Example 2 — Non-adjusting event:** A fire destroys a factory after the reporting date. The financial statements are not adjusted, but the event is disclosed.",
+                "**Example 3 — Dividend:** A dividend declared after the reporting date is not recognised as a liability but is disclosed.",
+                "**Example 4 — Settlement:** A court case is settled after the reporting date for $100,000, confirming a provision of $100,000 at year-end. The provision is adjusted if the settlement provides evidence of the year-end obligation.",
+                "**Example 5 — Going concern:** After the reporting date, a major customer cancels a contract, raising going concern doubts. The entity discloses the event and its impact."
+            ],
+            interviewAnswer: "IAS 10 is the <em>'after-party rule'</em> for financial statements. It asks: <em>Did something happen after the year-end that changes what we knew at the year-end?</em> If yes — <em>adjust</em> the numbers. If no — just <em>disclose</em> it. Think of it as <em>'separating hindsight from new news.'</em> Adjusting events = <em>new evidence about old conditions</em>. Non-adjusting events = <em>new conditions that don't affect the old numbers</em>. In an interview: <em>'IAS 10 ensures that only events providing evidence of year-end conditions are adjusted; other material events are disclosed.'</em>"
+        },
+        "IAS 34": {
+            fullTitle: "Interim Financial Reporting",
+            literature: [
+                "Sets minimum content for interim financial reports.",
+                "Interim reports may be condensed, but must include a statement of financial position, income statement, and cash flows.",
+                "Applies the same accounting policies as annual financial statements.",
+                "Materiality is assessed based on interim period data.",
+                "Disclosures about seasonality, unusual items, and changes in estimates are required."
+            ],
+            examples: [
+                "**Example 1 — Condensed report:** A company issues a half-year report with a condensed balance sheet and income statement, not full notes.",
+                "**Example 2 — Seasonality:** A retailer with most sales in December discloses that interim results are not representative of the full year.",
+                "**Example 3 — Estimate:** A company estimates its full-year tax rate and applies it to interim profit. If the estimate changes, the adjustment is recognised in the interim period.",
+                "**Example 4 — Impairment:** An interim impairment test reveals a $20,000 write-down. This is recognised in the interim period.",
+                "**Example 5 — Comparatives:** Interim reports include comparatives for the same interim period of the prior year and for the prior year-end balance sheet."
+            ],
+            interviewAnswer: "IAS 34 is the <em>'half-time score'</em> rule. It says: <em>You don't need a full annual report every six months, but you must give a fair snapshot.</em> It allows condensed statements but demands the same accounting policies as the annual accounts. Think of it as <em>'keeping investors informed in between annual reports.'</em> In an interview: <em>'IAS 34 sets the minimum content for interim reports, allowing condensed statements while ensuring consistency with annual policies and highlighting seasonality and unusual items.'</em>"
         },
         "IFRS 3": {
             fullTitle: "Business Combinations",
@@ -473,10 +593,119 @@
             examples: [
                 "**Example 1 — Basic acquisition:** Company A pays $10 million for Company B. Fair value of B's net identifiable assets is $8 million. Goodwill of $2 million is recognised.",
                 "**Example 2 — Bargain purchase:** Company A pays $5 million for Company B. Fair value of net assets is $6 million. A gain of $1 million is recognised immediately in profit or loss.",
-                "**Example 3 — Contingent consideration:** Company A agrees to pay an additional $1 million if Company B achieves a profit target. At acquisition date, the fair value of the contingent consideration is estimated at $700,000. This is included in consideration transferred.",
-                "**Example 4 — NCI measurement:** Company A acquires 80% of Company B for $8 million. The fair value of Company B is $9.5 million. NCI is measured at fair value of $1.9 million (20% × $9.5m). Total consideration = $9.9m.",
-                "**Example 5 — Acquired intangible assets:** Company B has a customer list not recognised under previous GAAP. At acquisition, the customer list is valued at $500,000 and recognised as an intangible asset in the consolidated accounts."
-            ]
+                "**Example 3 — Contingent consideration:** Company A agrees to pay an additional $1 million if Company B achieves a profit target. At acquisition date, the fair value of the contingent consideration is estimated at $700,000.",
+                "**Example 4 — NCI measurement:** Company A acquires 80% of Company B for $8 million. The fair value of Company B is $9.5 million. NCI is measured at fair value of $1.9 million.",
+                "**Example 5 — Acquired intangible assets:** Company B has a customer list not recognised under previous GAAP. At acquisition, the customer list is valued at $500,000 and recognised as an intangible asset."
+            ],
+            interviewAnswer: "IFRS 3 is the <em>'marriage contract'</em> for companies. When one company buys another, you don't just add the numbers — you <em>revalue everything at fair value</em> and recognise <em>goodwill</em> as the premium you paid. Think of it as <em>'buying a house'</em> — you pay for the land, the building, and the furniture at what they're worth today, not what the seller paid years ago. Any excess is goodwill; any bargain is a gain. In an interview: <em>'IFRS 3 uses the acquisition method: identify the acquirer, measure assets and liabilities at fair value, and recognise goodwill or a bargain purchase gain.'</em>"
+        },
+        "IFRS 10": {
+            fullTitle: "Consolidated Financial Statements",
+            literature: [
+                "A parent must present consolidated financial statements in which it consolidates all subsidiaries.",
+                "Control exists when the parent has power over the investee, exposure to variable returns, and ability to use power to affect returns.",
+                "Intra-group transactions and balances are eliminated in full.",
+                "Non-controlling interests are presented separately within equity.",
+                "A parent that is an investment entity may be exempt from consolidation."
+            ],
+            examples: [
+                "**Example 1 — Basic consolidation:** Parent owns 80% of Subsidiary. Subsidiary reports revenue of $1m and expenses of $600k. In consolidation, Parent combines line-by-line revenue and expenses.",
+                "**Example 2 — Intra-group elimination:** Parent sells goods to Subsidiary for $100,000, with a profit of $20,000. If goods are still in inventory, the $20,000 profit is eliminated.",
+                "**Example 3 — Non-controlling interests:** Subsidiary has net assets of $500,000. NCI owns 20%, so NCI in equity is $100,000.",
+                "**Example 4 — Loss of control:** Parent sells 30% of its 80% holding, retaining 50% control. The transaction is accounted for as an equity transaction.",
+                "**Example 5 — Consolidation exemption:** A parent that is a wholly-owned subsidiary of another entity may be exempt from preparing consolidated financial statements."
+            ],
+            interviewAnswer: "IFRS 10 is the <em>'family photo'</em> rule. If you control another company, you must include it in your consolidated financial statements as if it were one big family. Think of it as <em>'one parent, one set of books.'</em> You eliminate internal transactions, show minority interests separately, and present the whole group's financials. In an interview: <em>'IFRS 10 requires consolidation when there is control — power, variable returns, and the ability to use power to affect those returns. It ensures the group's financials reflect the parent's true economic interest.'</em>"
+        },
+        "IFRS 11": {
+            fullTitle: "Joint Arrangements",
+            literature: [
+                "A joint arrangement is either a joint operation or a joint venture.",
+                "Joint operations: parties recognise their share of assets, liabilities, revenues and expenses.",
+                "Joint ventures: parties use the equity method (IAS 28).",
+                "The classification depends on the rights and obligations of the parties.",
+                "A joint arrangement is a contractual arrangement whereby two or more parties have joint control."
+            ],
+            examples: [
+                "**Example 1 — Joint operation:** Two companies jointly operate an oil pipeline. Each recognises its share of the pipeline's assets and liabilities.",
+                "**Example 2 — Joint venture:** Two companies form a separate legal entity to develop a property. Each owns 50%. They use the equity method.",
+                "**Example 3 — Joint control:** Decisions about relevant activities require unanimous consent of the parties sharing control.",
+                "**Example 4 — Equity method losses:** A joint venture makes a loss of $100,000. The investor's share is $50,000. It reduces the investment carrying amount by $50,000.",
+                "**Example 5 — Classification change:** A joint venture becomes a joint operation due to a change in contractual terms. The entity remeasures its interest."
+            ],
+            interviewAnswer: "IFRS 11 is the <em>'partnership rule'</em> for joint arrangements. It asks: <em>Are you sharing the assets and liabilities directly, or just the net results?</em> If you share the assets directly — it's a <em>joint operation</em> (you book your share). If you share the net assets — it's a <em>joint venture</em> (you use the equity method). Think of it as <em>'two chefs in one kitchen'</em> — either you both own the ingredients (joint operation), or you own shares in the restaurant (joint venture). In an interview: <em>'IFRS 11 classifies joint arrangements as either joint operations or joint ventures, based on the parties' rights and obligations.'</em>"
+        },
+        "IFRS 12": {
+            fullTitle: "Disclosure of Interests in Other Entities",
+            literature: [
+                "Requires disclosures about significant judgements and assumptions in determining control, joint control or significant influence.",
+                "Disclosures about interests in subsidiaries, joint arrangements, associates and unconsolidated structured entities.",
+                "Includes nature of risks associated with interests in consolidated and unconsolidated entities.",
+                "Summarised financial information for material associates and joint ventures.",
+                "Disclosures about restrictions on consolidated assets and liabilities."
+            ],
+            examples: [
+                "**Example 1 — Associate disclosure:** A company holds 30% of Associate A. It discloses Associate A's name, nature of relationship, ownership interest, and summarised financial information.",
+                "**Example 2 — Subsidiary restrictions:** A parent discloses that a subsidiary's assets of $1m are restricted due to regulatory requirements.",
+                "**Example 3 — Significant judgements:** A company discloses the judgements made in determining that it controls an entity even though it owns less than 50% of the voting rights.",
+                "**Example 4 — Unconsolidated structured entities:** A bank discloses its interests in securitisation vehicles that it does not consolidate.",
+                "**Example 5 — NCI information:** A parent with a 60%-owned subsidiary discloses summarised financial information about the subsidiary."
+            ],
+            interviewAnswer: "IFRS 12 is the <em>'tell-all' disclosure standard</em> for interests in other entities. It says: <em>If you have investments in other companies, tell us everything — what they are, how you control or influence them, and what risks you're exposed to.</em> Think of it as <em>'full transparency about your corporate relationships.'</em> In an interview: <em>'IFRS 12 requires disclosures about subsidiaries, joint arrangements, associates, and structured entities, including the nature of risks and significant judgements.'</em>"
+        },
+        "IAS 28": {
+            fullTitle: "Investments in Associates and Joint Ventures",
+            literature: [
+                "Associates are entities over which the investor has significant influence (usually 20-50% voting rights).",
+                "Joint ventures are jointly controlled entities where the parties have rights to the net assets.",
+                "Both are accounted for using the equity method.",
+                "The equity method initially recognises the investment at cost and subsequently adjusts for the investor's share of profit or loss and OCI.",
+                "Dividends received reduce the carrying amount of the investment."
+            ],
+            examples: [
+                "**Example 1 — Initial recognition:** A company buys 30% of Associate A for $300,000. It initially recognises the investment at $300,000.",
+                "**Example 2 — Share of profit:** Associate A earns $100,000. The investor recognises $30,000 as investment income and increases the investment carrying amount to $330,000.",
+                "**Example 3 — Dividends:** Associate A pays dividends of $50,000. The investor receives $15,000, reducing the investment carrying amount to $315,000.",
+                "**Example 4 — Impairment:** The investment's recoverable amount falls to $250,000. The investor recognises an impairment loss of $65,000.",
+                "**Example 5 — Joint venture:** A 50% joint venture earns $200,000. The investor recognises $100,000 as its share of profit."
+            ],
+            interviewAnswer: "IAS 28 is the <em>'equity method'</em> standard for associates and joint ventures. It says: <em>If you have significant influence but not control, you don't consolidate — you use the equity method.</em> Think of it as <em>'one line on the balance sheet'</em> that grows with profits and shrinks with dividends. In an interview: <em>'IAS 28 requires the equity method for associates and joint ventures, where the investment is initially at cost and adjusted for the investor's share of profits, losses, and OCI.'</em>"
+        },
+        "IAS 27": {
+            fullTitle: "Separate Financial Statements",
+            literature: [
+                "Separate financial statements are those presented by a parent in which investments in subsidiaries, associates and joint ventures are accounted for at cost or in accordance with IFRS 9.",
+                "The standard does not require separate financial statements, but if prepared, they must comply.",
+                "Dividends from subsidiaries are recognised as income when the right to receive them is established.",
+                "Disclosures about the parent's investments are required.",
+                "Separate financial statements are distinct from consolidated financial statements."
+            ],
+            examples: [
+                "**Example 1 — Cost method:** A parent owns 80% of a subsidiary, carried at cost of $500,000 in separate financial statements.",
+                "**Example 2 — Dividend income:** The subsidiary pays a dividend of $50,000. The parent recognises dividend income of $40,000 (80% share).",
+                "**Example 3 — IFRS 9 election:** A parent elects to measure its investment in a subsidiary at fair value through OCI in its separate financial statements.",
+                "**Example 4 — Impairment:** The subsidiary's recoverable amount falls below cost. The parent recognises an impairment loss in separate financial statements.",
+                "**Example 5 — Disclosure:** The parent discloses that the separate financial statements are prepared in addition to consolidated financial statements."
+            ],
+            interviewAnswer: "IAS 27 is the <em>'solo album'</em> rule for parents. Sometimes a parent wants to present its own financial statements without consolidating. IAS 27 says: <em>You can, but you must carry investments at cost or at fair value under IFRS 9.</em> Think of it as <em>'the parent's own balance sheet, separate from the group.'</em> In an interview: <em>'IAS 27 governs separate financial statements, where investments in subsidiaries, associates, and joint ventures are measured at cost or under IFRS 9.'</em>"
+        },
+        "IFRS 2": {
+            fullTitle: "Share-based Payment",
+            literature: [
+                "Equity-settled share-based payments are measured at fair value at grant date.",
+                "The expense is recognised over the vesting period, with a corresponding increase in equity.",
+                "Cash-settled share-based payments are remeasured at each reporting date until settled.",
+                "Disclosures about the nature and extent of share-based payment arrangements are required.",
+                "For equity-settled awards, fair value is not subsequently remeasured."
+            ],
+            examples: [
+                "**Example 1 — Stock options:** A company grants 1,000 options to its CEO on 1 Jan 2025. Fair value per option = $5. Vesting period = 3 years. Each year it recognises an expense of $1,667.",
+                "**Example 2 — Cash-settled SARs:** A company grants 500 SARs. At grant date, fair value = $10 each. At year-end, fair value increases to $12. The company recognises a liability of $6,000.",
+                "**Example 3 — Non-employee awards:** A company issues shares to a consultant for services. The fair value of the shares issued is $20,000. The company recognises an expense of $20,000.",
+                "**Example 4 — Performance conditions:** An award vests only if revenue grows by 10% per year. At grant date, the company estimates the probability of vesting.",
+                "**Example 5 — Modifications:** A company reprices options from $10 to $8 per share. The incremental fair value of $2 is recognised as additional expense."
+            ],
+            interviewAnswer: "IFRS 2 is the <em>'paying with shares'</em> standard. When you pay employees or suppliers with shares or options, you must recognise the <em>fair value</em> of those awards as an expense over the vesting period. Think of it as <em>'paying with promises'</em> — the promise has a value today, and you expense it as the employee earns it. In an interview: <em>'IFRS 2 requires equity-settled share-based payments to be measured at fair value at grant date and expensed over the vesting period, with cash-settled awards remeasured at each reporting date.'</em>"
         },
         "IFRS 5": {
             fullTitle: "Non-current Assets Held for Sale and Discontinued Operations",
@@ -485,15 +714,16 @@
                 "They must be available for immediate sale and the sale must be highly probable.",
                 "Held-for-sale assets are measured at the lower of carrying amount and fair value less costs to sell.",
                 "No depreciation is charged on such assets.",
-                "They are presented separately on the balance sheet and statement of comprehensive income."
+                "They are presented separately on the balance sheet."
             ],
             examples: [
-                "**Example 1 — Write-down:** A company plans to sell a factory (carrying amount $2m, fair value less costs to sell $1.8m). It writes the asset down by $200,000 and presents it as 'held for sale' separately.",
-                "**Example 2 — No depreciation:** A machine held for sale had been depreciated at $10,000 per year. Once classified as held for sale, depreciation stops. The carrying amount remains at $80,000.",
-                "**Example 3 — Discontinued operation:** A company sells its entire retail division. The division's results are presented separately as 'discontinued operations' in the income statement, net of tax.",
-                "**Example 4 — Reclassification back:** A company classified a building as held for sale, but the sale fell through and it no longer meets the criteria. It reclassifies the building back to PPE and measures it at the lower of its carrying amount before classification (adjusted for depreciation) and its recoverable amount.",
-                "**Example 5 — Gain on disposal:** A held-for-sale asset has a carrying amount of $500,000 and is sold for $550,000. A gain of $50,000 is recognised in profit or loss."
-            ]
+                "**Example 1 — Write-down:** A company plans to sell a factory (carrying amount $2m, fair value less costs to sell $1.8m). It writes the asset down by $200,000.",
+                "**Example 2 — No depreciation:** A machine held for sale had been depreciated at $10,000 per year. Once classified as held for sale, depreciation stops.",
+                "**Example 3 — Discontinued operation:** A company sells its entire retail division. The division's results are presented separately as discontinued operations.",
+                "**Example 4 — Reclassification back:** A company classified a building as held for sale, but the sale fell through. It reclassifies the building back to PPE.",
+                "**Example 5 — Gain on disposal:** A held-for-sale asset has a carrying amount of $500,000 and is sold for $550,000. A gain of $50,000 is recognised."
+            ],
+            interviewAnswer: "IFRS 5 is the <em>'for sale sign'</em> standard. When you decide to sell a major asset or a business, you move it to a <em>separate shelf</em> on the balance sheet. You stop depreciating it, measure it at the lower of carrying amount and fair value less costs to sell, and present it separately. Think of it as <em>'packing your bags and waiting for the buyer.'</em> In an interview: <em>'IFRS 5 governs assets held for sale, requiring separate presentation, no depreciation, and measurement at the lower of carrying amount and fair value less costs to sell.'</em>"
         },
         "IFRS 6": {
             fullTitle: "Exploration for and Evaluation of Mineral Resources",
@@ -507,112 +737,11 @@
             examples: [
                 "**Example 1 — Capitalisation:** A mining company spends $500,000 exploring a new site. Under IFRS 6, it capitalises the amount as an exploration asset.",
                 "**Example 2 — Impairment:** At year-end, the site shows no viable mineral deposits. The company impairs the asset to zero and recognises a $500,000 loss.",
-                "**Example 3 — Accounting policy choice:** A company can choose to expense exploration costs as incurred or capitalise them. It must apply the policy consistently to all similar expenditures.",
+                "**Example 3 — Accounting policy choice:** A company can choose to expense exploration costs as incurred or capitalise them.",
                 "**Example 4 — Disposal:** A company sells an exploration asset for $300,000. The carrying amount is $250,000. A gain of $50,000 is recognised.",
-                "**Example 5 — Classification:** Exploration assets are presented as a separate class of non-current assets on the balance sheet, not as part of PPE or intangibles."
-            ]
-        },
-        "IFRS 7": {
-            fullTitle: "Financial Instruments: Disclosures",
-            literature: [
-                "Requires disclosures about the significance of financial instruments for an entity's financial position and performance.",
-                "Qualitative and quantitative disclosures about risks arising from financial instruments (credit, liquidity, market risk).",
-                "Disclosures about the nature and extent of risks and how they are managed.",
-                "Includes a three-level fair value hierarchy for financial instruments.",
-                "Requires disclosures about the allowance for expected credit losses."
+                "**Example 5 — Classification:** Exploration assets are presented as a separate class of non-current assets on the balance sheet."
             ],
-            examples: [
-                "**Example 1 — Credit risk:** A bank holds a portfolio of loans. It must disclose the total carrying amount, the credit quality, past-due amounts, and the maximum exposure to credit risk.",
-                "**Example 2 — Liquidity risk:** A company must disclose a maturity analysis of its financial liabilities, showing amounts due within 1 year, 1-5 years, and over 5 years.",
-                "**Example 3 — Market risk:** A company with foreign currency borrowings discloses a sensitivity analysis showing how profit or loss would change if exchange rates moved by 10%.",
-                "**Example 4 — Fair value hierarchy:** A company discloses that its financial assets include Level 1 (quoted prices), Level 2 (observable inputs), and Level 3 (unobservable inputs) measurements.",
-                "**Example 5 — Collateral:** A company discloses the carrying amount of financial assets pledged as collateral and the terms and conditions of the pledge."
-            ]
-        },
-        "IFRS 8": {
-            fullTitle: "Operating Segments",
-            literature: [
-                "Entities must disclose information about their operating segments.",
-                "Segments are based on internal reports regularly reviewed by the chief operating decision maker.",
-                "Disclosures include profit or loss, assets, liabilities and revenue for each reportable segment.",
-                "Reconciliations to the entity's financial statements are required.",
-                "The 'management approach' is used, so segments reflect how management runs the business."
-            ],
-            examples: [
-                "**Example 1 — Segmentation:** A conglomerate has three divisions: Retail, Manufacturing and Logistics. It reports segment revenue and profit for each.",
-                "**Example 2 — Reconciliation:** Total segment profit is $500,000, but consolidated profit before tax is $450,000. The company reconciles the difference, e.g., unallocated corporate expenses of $50,000.",
-                "**Example 3 — Segment assets:** A company reports segment assets for each division. Total segment assets must reconcile to total assets on the balance sheet.",
-                "**Example 4 — Geographic information:** A company with operations in Europe and Asia discloses revenue and non-current assets split by geographic region, even if not organised by geography internally.",
-                "**Example 5 — Major customer:** If a single customer accounts for more than 10% of revenue, the company discloses that fact and the total revenue from that customer, without naming the customer."
-            ]
-        },
-        "IFRS 9": {
-            fullTitle: "Financial Instruments",
-            literature: [
-                "Classification of financial assets depends on the business model and contractual cash flow characteristics.",
-                "Financial assets are measured at amortised cost, fair value through OCI, or fair value through profit or loss.",
-                "Expected credit losses (ECL) model applies to impairment of financial assets.",
-                "Hedge accounting aligns the accounting for hedging instruments with hedged items.",
-                "Financial liabilities are generally measured at amortised cost unless designated at FVTPL."
-            ],
-            examples: [
-                "**Example 1 — Amortised cost:** A company buys a bond for $1,000 with the intention of collecting contractual cash flows. It measures the bond at amortised cost. Interest income is recognised using the effective interest method.",
-                "**Example 2 — Fair value through OCI:** A company holds a bond both to collect cash flows and to sell. Changes in fair value are recognised in OCI, and on disposal, gains or losses are recycled to profit or loss.",
-                "**Example 3 — Fair value through P&L:** A company holds shares for trading. Changes in fair value are recognised immediately in profit or loss.",
-                "**Example 4 — Expected credit loss:** A company has a receivable of $100,000. It estimates a 2% probability of default. It recognises an ECL allowance of $2,000, reducing the carrying amount to $98,000.",
-                "**Example 5 — Hedge accounting:** A company hedges its exposure to interest rate changes on a floating-rate loan using an interest rate swap. It applies cash flow hedge accounting, recognising the effective portion of the swap's gain or loss in OCI."
-            ]
-        },
-        "IFRS 10": {
-            fullTitle: "Consolidated Financial Statements",
-            literature: [
-                "A parent must present consolidated financial statements in which it consolidates all subsidiaries.",
-                "Control exists when the parent has power over the investee, exposure to variable returns, and ability to use power to affect returns.",
-                "Intra-group transactions and balances are eliminated in full.",
-                "Non-controlling interests are presented separately within equity.",
-                "A parent that is an investment entity may be exempt from consolidation."
-            ],
-            examples: [
-                "**Example 1 — Basic consolidation:** Parent owns 80% of Subsidiary. Subsidiary reports revenue of $1m and expenses of $600k. In consolidation, Parent combines line-by-line revenue and expenses; the $400k profit is split: $320k to owners of Parent and $80k to NCI.",
-                "**Example 2 — Intra-group elimination:** Parent sells goods to Subsidiary for $100,000, with a profit of $20,000. If the goods are still in Subsidiary's inventory at year-end, the $20,000 profit is eliminated from consolidated revenue and inventory.",
-                "**Example 3 — Non-controlling interests:** Subsidiary has net assets of $500,000. NCI owns 20%, so NCI in equity is $100,000. If Subsidiary earns $50,000 profit, NCI's share is $10,000.",
-                "**Example 4 — Loss of control:** Parent sells 30% of its 80% holding, retaining 50% control. The transaction is accounted for as an equity transaction, with no gain or loss recognised in profit or loss.",
-                "**Example 5 — Consolidation exemption:** A parent that is a wholly-owned subsidiary of another entity may be exempt from preparing consolidated financial statements if certain conditions are met."
-            ]
-        },
-        "IFRS 11": {
-            fullTitle: "Joint Arrangements",
-            literature: [
-                "A joint arrangement is either a joint operation or a joint venture.",
-                "Joint operations: parties recognise their share of assets, liabilities, revenues and expenses.",
-                "Joint ventures: parties use the equity method (IAS 28).",
-                "The classification depends on the rights and obligations of the parties.",
-                "A joint arrangement is a contractual arrangement whereby two or more parties have joint control."
-            ],
-            examples: [
-                "**Example 1 — Joint operation:** Two companies jointly operate an oil pipeline. Each recognises its share of the pipeline's assets and liabilities, and its share of revenue and expenses.",
-                "**Example 2 — Joint venture:** Two companies form a separate legal entity to develop a property. Each owns 50%. They use the equity method: initially recognise investment at cost, then adjust for share of profit or loss and dividends.",
-                "**Example 3 — Joint control:** Decisions about relevant activities require unanimous consent of the parties sharing control. If one party can make decisions unilaterally, it is not a joint arrangement.",
-                "**Example 4 — Equity method losses:** A joint venture makes a loss of $100,000. The investor's share is $50,000. It reduces the investment carrying amount by $50,000 and recognises a loss of $50,000 in profit or loss.",
-                "**Example 5 — Classification change:** A joint venture becomes a joint operation due to a change in contractual terms. The entity remeasures its interest and recognises any gain or loss."
-            ]
-        },
-        "IFRS 12": {
-            fullTitle: "Disclosure of Interests in Other Entities",
-            literature: [
-                "Requires disclosures about significant judgements and assumptions in determining control, joint control or significant influence.",
-                "Disclosures about interests in subsidiaries, joint arrangements, associates and unconsolidated structured entities.",
-                "Includes nature of risks associated with interests in consolidated and unconsolidated entities.",
-                "Summarised financial information for material associates and joint ventures.",
-                "Disclosures about restrictions on consolidated assets and liabilities."
-            ],
-            examples: [
-                "**Example 1 — Associate disclosure:** A company holds 30% of Associate A. It discloses Associate A's name, nature of relationship, ownership interest, and summarised financial information (total assets, liabilities, revenue, profit).",
-                "**Example 2 — Subsidiary restrictions:** A parent discloses that a subsidiary's assets of $1m are restricted due to regulatory requirements and cannot be transferred to the parent.",
-                "**Example 3 — Significant judgements:** A company discloses the judgements made in determining that it controls an entity even though it owns less than 50% of the voting rights (e.g., due to contractual arrangements).",
-                "**Example 4 — Unconsolidated structured entities:** A bank discloses its interests in securitisation vehicles that it does not consolidate, including the nature of the interests and maximum exposure to loss.",
-                "**Example 5 — NCI information:** A parent with a 60%-owned subsidiary discloses summarised financial information about the subsidiary, including dividends paid to NCI."
-            ]
+            interviewAnswer: "IFRS 6 is the <em>'mining exploration'</em> standard. It lets mining and oil companies <em>capitalise exploration costs</em> as assets, rather than expensing them immediately. Think of it as <em>'planting seeds and waiting to see if they grow.'</em> The standard is temporary, but it gives companies flexibility while a permanent standard is developed. In an interview: <em>'IFRS 6 permits the capitalisation of exploration and evaluation assets, subject to impairment testing, with disclosures about the amounts and risks involved.'</em>"
         },
         "IFRS 13": {
             fullTitle: "Fair Value Measurement",
@@ -625,11 +754,336 @@
             ],
             examples: [
                 "**Example 1 — Level 1:** A company owns shares listed on an active stock exchange. The quoted price of $25 per share is a Level 1 input.",
-                "**Example 2 — Level 2:** A company holds an interest rate swap. Fair value is determined using observable yield curves and credit spreads. These are Level 2 inputs.",
-                "**Example 3 — Level 3:** A company holds unlisted shares. It uses a discounted cash flow model with unobservable inputs (e.g., revenue growth rate). This is a Level 3 measurement.",
-                "**Example 4 — Principal market:** A company owns a commodity traded on two exchanges. The exchange with the highest volume and activity is the principal market. Fair value is based on prices in that market.",
-                "**Example 5 — Fair value of a liability:** A company has a liability for a written put option. Fair value is the price that would be paid to transfer the liability to a market participant, considering the risk of non-performance."
-            ]
+                "**Example 2 — Level 2:** A company holds an interest rate swap. Fair value is determined using observable yield curves and credit spreads.",
+                "**Example 3 — Level 3:** A company holds unlisted shares. It uses a discounted cash flow model with unobservable inputs.",
+                "**Example 4 — Principal market:** A company owns a commodity traded on two exchanges. Fair value is based on prices in the principal market.",
+                "**Example 5 — Fair value of a liability:** A company has a liability for a written put option. Fair value is the price to transfer the liability."
+            ],
+            interviewAnswer: "IFRS 13 is the <em>'what's it worth?'</em> rulebook. It defines fair value as the <em>exit price</em> — what you'd get if you sold an asset or paid to transfer a liability in an orderly market. Think of it as <em>'the market's opinion, not your own.'</em> The three-level hierarchy tells you how reliable the valuation is: Level 1 (quoted prices), Level 2 (observable inputs), Level 3 (unobservable inputs). In an interview: <em>'IFRS 13 provides a single framework for measuring fair value and requires disclosures about the valuation techniques and inputs used.'</em>"
+        },
+        "IFRS 16": {
+            fullTitle: "Leases",
+            literature: [
+                "Lessees recognise a right-of-use asset and a lease liability for almost all leases.",
+                "The lease liability is measured at the present value of lease payments.",
+                "The right-of-use asset is initially measured at cost and subsequently depreciated.",
+                "Lessors classify leases as finance or operating leases.",
+                "Short-term leases (less than 12 months) and low-value assets may be exempted."
+            ],
+            examples: [
+                "**Example 1 — Basic lease:** A company leases an office for 10 years with annual payments of $50,000. PV of lease payments = $400,000. It recognises a right-of-use asset and lease liability of $400,000.",
+                "**Example 2 — Depreciation:** The right-of-use asset of $400,000 is depreciated over 10 years at $40,000 per year.",
+                "**Example 3 — Interest:** The lease liability of $400,000 incurs interest at 5%, so $20,000 interest expense is recognised in year 1.",
+                "**Example 4 — Short-term exemption:** A company leases a copier for 6 months. It expenses the lease payments as incurred.",
+                "**Example 5 — Sale and leaseback:** A company sells a building for $1m and leases it back for 10 years. It recognises a right-of-use asset and a lease liability."
+            ],
+            interviewAnswer: "IFRS 16 is the <em>'no more off-balance sheet leases'</em> standard. It says: <em>If you lease something for more than 12 months, put it on your balance sheet as a right-of-use asset and a lease liability.</em> Think of it as <em>'renting a car — you don't own it, but you control it, so it's on your books.'</em> This gives investors a truer picture of a company's obligations. In an interview: <em>'IFRS 16 requires lessees to recognise a right-of-use asset and a lease liability for almost all leases, eliminating the distinction between operating and finance leases for lessees.'</em>"
+        },
+        "IAS 2": {
+            fullTitle: "Inventories",
+            literature: [
+                "Inventories are measured at the lower of cost and net realisable value.",
+                "Cost includes purchase cost, conversion cost, and other costs to bring inventory to its present location and condition.",
+                "Cost formulas include FIFO and weighted average cost.",
+                "Net realisable value is the estimated selling price less costs to complete and sell.",
+                "Write-downs to net realisable value are recognised as an expense."
+            ],
+            examples: [
+                "**Example 1 — Cost:** A company buys 100 units at $10 each. Cost = $1,000.",
+                "**Example 2 — NRV:** The units can be sold for $12 each, but selling costs are $3 each. NRV = $9 per unit. Inventory is written down to $900.",
+                "**Example 3 — FIFO:** A company buys 100 units at $10 and later 100 units at $12. It sells 150 units. Cost of sales = (100 × $10) + (50 × $12) = $1,600.",
+                "**Example 4 — Weighted average:** Total cost = $2,200 for 200 units. Weighted average cost = $11 per unit.",
+                "**Example 5 — Write-down reversal:** If NRV later increases, the write-down can be reversed, but only to the original cost."
+            ],
+            interviewAnswer: "IAS 2 is the <em>'inventory rule'</em> — it says: <em>Value your stock at the lower of what it cost you and what you can actually sell it for.</em> Think of it as <em>'don't overvalue old stock.'</em> If you bought something for $10 but can only sell it for $8, write it down to $8. Cost formulas like FIFO and weighted average help you track what you've sold. In an interview: <em>'IAS 2 requires inventories to be measured at the lower of cost and net realisable value, using cost formulas like FIFO or weighted average.'</em>"
+        },
+        "IAS 16": {
+            fullTitle: "Property, Plant and Equipment",
+            literature: [
+                "PPE is initially measured at cost.",
+                "Subsequently, it is measured using either the cost model or the revaluation model.",
+                "Depreciation is recognised over the useful life of the asset.",
+                "The depreciable amount is cost less residual value.",
+                "Disposals are recognised when the asset is derecognised."
+            ],
+            examples: [
+                "**Example 1 — Cost:** A company buys a machine for $100,000 plus $5,000 installation. Cost = $105,000.",
+                "**Example 2 — Depreciation:** The machine has a useful life of 10 years and residual value of $5,000. Annual depreciation = ($105,000 - $5,000) / 10 = $10,000.",
+                "**Example 3 — Revaluation:** The machine is revalued to $120,000. The surplus of $15,000 is recognised in OCI.",
+                "**Example 4 — Disposal:** The machine is sold for $80,000. Carrying amount = $85,000. A loss of $5,000 is recognised.",
+                "**Example 5 — Component accounting:** A building has a roof that needs replacement every 20 years. The roof is depreciated separately."
+            ],
+            interviewAnswer: "IAS 16 is the <em>'big stuff'</em> standard — property, plant, and equipment. It says: <em>Record your long-term assets at cost, depreciate them over their useful lives, and you can choose to revalue them if you want.</em> Think of it as <em>'buying a delivery van — you record what you paid, depreciate it each year, and if you sell it, you book a gain or loss.'</em> In an interview: <em>'IAS 16 governs the recognition, measurement, depreciation, and derecognition of property, plant and equipment, using either the cost or revaluation model.'</em>"
+        },
+        "IAS 36": {
+            fullTitle: "Impairment of Assets",
+            literature: [
+                "Assets are tested for impairment when there is an indication of impairment.",
+                "An asset is impaired when its carrying amount exceeds its recoverable amount.",
+                "Recoverable amount is the higher of fair value less costs of disposal and value in use.",
+                "Impairment losses are recognised in profit or loss.",
+                "Goodwill and intangibles with indefinite useful lives are tested annually."
+            ],
+            examples: [
+                "**Example 1 — Indication:** A factory's market value falls significantly. The company tests the factory for impairment.",
+                "**Example 2 — Recoverable amount:** Carrying amount = $500,000. Fair value less costs of disposal = $450,000. Value in use = $480,000. Recoverable amount = $480,000.",
+                "**Example 3 — Impairment loss:** The asset is written down by $20,000 ($500,000 - $480,000).",
+                "**Example 4 — Goodwill:** A company acquires a business with goodwill of $100,000. Annual impairment test shows recoverable amount is $90,000. An impairment loss of $10,000 is recognised.",
+                "**Example 5 — Reversal:** An impairment loss can be reversed if conditions change, but not for goodwill."
+            ],
+            interviewAnswer: "IAS 36 is the <em>'reality check'</em> standard. It says: <em>If an asset's value drops below what's on your books, write it down.</em> Think of it as <em>'if your car is worth less than you paid, you have to acknowledge the loss.'</em> You compare the carrying amount to the recoverable amount (the higher of fair value less costs to sell and value in use). Goodwill gets tested every year. In an interview: <em>'IAS 36 requires impairment testing when there's an indication of impairment, with recoverable amount being the higher of fair value less costs of disposal and value in use.'</em>"
+        },
+        "IAS 38": {
+            fullTitle: "Intangible Assets",
+            literature: [
+                "Intangible assets are identifiable non-monetary assets without physical substance.",
+                "They are initially measured at cost.",
+                "Subsequently, they are measured using the cost model or revaluation model.",
+                "Internally generated intangibles (except development costs) are expensed.",
+                "Intangible assets with indefinite useful lives are not amortised but tested annually for impairment."
+            ],
+            examples: [
+                "**Example 1 — Purchased patent:** A company buys a patent for $50,000. It recognises an intangible asset of $50,000.",
+                "**Example 2 — Amortisation:** The patent has a useful life of 10 years. Annual amortisation = $5,000.",
+                "**Example 3 — Development costs:** A company spends $100,000 developing a new product. If criteria are met, it capitalises the costs.",
+                "**Example 4 — Research costs:** Research costs of $50,000 are expensed as incurred.",
+                "**Example 5 — Indefinite life:** A trademark with indefinite life is not amortised but tested annually for impairment."
+            ],
+            interviewAnswer: "IAS 38 is the <em>'invisible assets'</em> standard — patents, trademarks, software, and goodwill. It says: <em>If you buy an intangible asset, record it at cost and amortise it over its useful life. If you develop it yourself, only capitalise development costs, not research.</em> Think of it as <em>'you can't capitalise your own brilliant ideas until they're proven.'</em> In an interview: <em>'IAS 38 governs the recognition and measurement of intangible assets, requiring research costs to be expensed and development costs to be capitalised when specific criteria are met.'</em>"
+        },
+        "IAS 40": {
+            fullTitle: "Investment Property",
+            literature: [
+                "Investment property is property held to earn rentals or for capital appreciation.",
+                "It is initially measured at cost.",
+                "Subsequently, it is measured using the fair value model or cost model.",
+                "Fair value changes are recognised in profit or loss.",
+                "Disclosures about fair value are required even if the cost model is used."
+            ],
+            examples: [
+                "**Example 1 — Cost:** A company buys an office building for $1m to earn rentals. It initially recognises the property at $1m.",
+                "**Example 2 — Fair value model:** At year-end, fair value is $1.1m. A gain of $100,000 is recognised in profit or loss.",
+                "**Example 3 — Cost model:** The building is depreciated at $20,000 per year. Fair value is disclosed as $1.1m.",
+                "**Example 4 — Rental income:** The company receives rental income of $80,000, recognised in profit or loss.",
+                "**Example 5 — Transfer:** A building is transferred from investment property to owner-occupied. The fair value at transfer date becomes the deemed cost."
+            ],
+            interviewAnswer: "IAS 40 is the <em>'landlord'</em> standard. It says: <em>If you hold property to earn rent or for capital growth, it's investment property — measure it at fair value (with changes in P&L) or at cost (with fair value disclosed).</em> Think of it as <em>'you're not using the building, you're investing in it.'</em> In an interview: <em>'IAS 40 governs investment property, allowing either the fair value model or cost model, with fair value changes recognised in profit or loss under the fair value model.'</em>"
+        },
+        "IAS 41": {
+            fullTitle: "Agriculture",
+            literature: [
+                "Biological assets are measured at fair value less costs to sell.",
+                "Agricultural produce harvested from biological assets is measured at fair value less costs to sell at the point of harvest.",
+                "Changes in fair value are recognised in profit or loss.",
+                "Disclosures about biological assets are required.",
+                "The standard applies to living animals and plants."
+            ],
+            examples: [
+                "**Example 1 — Biological asset:** A farmer has 100 sheep. Fair value less costs to sell = $10,000. The sheep are recognised at $10,000.",
+                "**Example 2 — Newborn lambs:** 20 lambs are born. Fair value less costs to sell = $2,000. A gain of $2,000 is recognised.",
+                "**Example 3 — Harvested wool:** Wool is harvested. Fair value less costs to sell at harvest = $500. The wool is recognised as inventory at $500.",
+                "**Example 4 — Change in fair value:** The sheep's fair value increases to $11,000. A gain of $1,000 is recognised.",
+                "**Example 5 — Disclosure:** The farmer discloses the number of sheep, their fair value, and the methods used to determine fair value."
+            ],
+            interviewAnswer: "IAS 41 is the <em>'farm'</em> standard. It says: <em>Living animals and plants (biological assets) are measured at fair value less costs to sell, with changes going through profit or loss.</em> Think of it as <em>'your crops and livestock are worth what the market says today, not what you paid.'</em> In an interview: <em>'IAS 41 requires biological assets to be measured at fair value less costs to sell, with changes recognised in profit or loss, and agricultural produce measured at fair value at harvest.'</em>"
+        },
+        "IFRS 7": {
+            fullTitle: "Financial Instruments: Disclosures",
+            literature: [
+                "Requires disclosures about the significance of financial instruments for an entity's financial position and performance.",
+                "Qualitative and quantitative disclosures about risks arising from financial instruments.",
+                "Disclosures about the nature and extent of risks and how they are managed.",
+                "Includes a three-level fair value hierarchy for financial instruments.",
+                "Requires disclosures about the allowance for expected credit losses."
+            ],
+            examples: [
+                "**Example 1 — Credit risk:** A bank discloses the total carrying amount, credit quality, and past-due amounts of its loan portfolio.",
+                "**Example 2 — Liquidity risk:** A company discloses a maturity analysis of its financial liabilities.",
+                "**Example 3 — Market risk:** A company with foreign currency borrowings discloses a sensitivity analysis.",
+                "**Example 4 — Fair value hierarchy:** A company discloses Level 1, 2, and 3 fair value measurements.",
+                "**Example 5 — Collateral:** A company discloses the carrying amount of financial assets pledged as collateral."
+            ],
+            interviewAnswer: "IFRS 7 is the <em>'tell us about your risks'</em> standard. It says: <em>If you have financial instruments, disclose everything — what they are, how you measure them, and what risks they carry.</em> Think of it as <em>'full transparency about your financial risk exposure.'</em> In an interview: <em>'IFRS 7 requires disclosures about the significance of financial instruments, the nature and extent of risks, and the fair value hierarchy.'</em>"
+        },
+        "IFRS 9": {
+            fullTitle: "Financial Instruments",
+            literature: [
+                "Classification of financial assets depends on the business model and contractual cash flow characteristics.",
+                "Financial assets are measured at amortised cost, fair value through OCI, or fair value through profit or loss.",
+                "Expected credit losses (ECL) model applies to impairment of financial assets.",
+                "Hedge accounting aligns the accounting for hedging instruments with hedged items.",
+                "Financial liabilities are generally measured at amortised cost unless designated at FVTPL."
+            ],
+            examples: [
+                "**Example 1 — Amortised cost:** A company buys a bond for $1,000 with the intention of collecting contractual cash flows. It measures the bond at amortised cost.",
+                "**Example 2 — Fair value through OCI:** A company holds a bond both to collect cash flows and to sell. Changes in fair value are recognised in OCI.",
+                "**Example 3 — Fair value through P&L:** A company holds shares for trading. Changes in fair value are recognised immediately in profit or loss.",
+                "**Example 4 — Expected credit loss:** A company has a receivable of $100,000. It estimates a 2% probability of default. It recognises an ECL allowance of $2,000.",
+                "**Example 5 — Hedge accounting:** A company hedges interest rate risk on a floating-rate loan using an interest rate swap."
+            ],
+            interviewAnswer: "IFRS 9 is the <em>'financial instruments'</em> standard — the big one. It says: <em>Classify your financial assets based on your business model and the cash flows — then measure them at amortised cost, FVOCI, or FVTPL. Use expected credit losses for impairment. And apply hedge accounting to match your hedges with your risks.</em> Think of it as <em>'how you account for loans, bonds, derivatives, and hedging.'</em> In an interview: <em>'IFRS 9 covers classification, measurement, impairment (using the ECL model), and hedge accounting for financial instruments.'</em>"
+        },
+        "IAS 32": {
+            fullTitle: "Financial Instruments: Presentation",
+            literature: [
+                "Financial instruments are classified as financial liabilities or equity based on the substance of the contractual arrangement.",
+                "A financial liability exists if there is a contractual obligation to deliver cash or another financial asset.",
+                "Equity instruments represent a residual interest in the assets of an entity after deducting liabilities.",
+                "Compound instruments (e.g., convertible bonds) are split into liability and equity components.",
+                "Disclosures about the classification of financial instruments are required."
+            ],
+            examples: [
+                "**Example 1 — Liability:** A company issues a bond that must be repaid in cash. It is classified as a liability.",
+                "**Example 2 — Equity:** A company issues ordinary shares. They are classified as equity.",
+                "**Example 3 — Convertible bond:** A company issues a convertible bond for $1,000. The liability component is valued at $900, and the equity component at $100.",
+                "**Example 4 — Preference shares:** Redeemable preference shares are classified as liabilities if redemption is mandatory.",
+                "**Example 5 — Treasury shares:** A company buys back its own shares. They are deducted from equity."
+            ],
+            interviewAnswer: "IAS 32 is the <em>'liability or equity?'</em> standard. It says: <em>Look at the substance, not the label. If you must deliver cash, it's a liability. If it's a residual interest, it's equity.</em> Think of it as <em>'if you have to pay it back, it's debt; if you own it, it's equity.'</em> In an interview: <em>'IAS 32 governs the classification of financial instruments as liabilities or equity, based on the substance of the contractual arrangement, and requires compound instruments to be split.'</em>"
+        },
+        "IAS 39": {
+            fullTitle: "Financial Instruments: Recognition and Measurement (largely superseded by IFRS 9)",
+            literature: [
+                "Sets out recognition and measurement of financial instruments.",
+                "Financial assets are classified into four categories: FVTPL, held-to-maturity, loans and receivables, and available-for-sale.",
+                "Financial liabilities are measured at amortised cost or FVTPL.",
+                "Impairment of financial assets is recognised when there is objective evidence of impairment.",
+                "Hedge accounting is permitted under strict conditions."
+            ],
+            examples: [
+                "**Example 1 — Held-to-maturity:** A company buys a bond and intends to hold it to maturity. It measures the bond at amortised cost.",
+                "**Example 2 — Available-for-sale:** A company holds shares classified as available-for-sale. Changes in fair value are recognised in OCI.",
+                "**Example 3 — Loans and receivables:** A company provides a loan of $100,000. It measures the loan at amortised cost.",
+                "**Example 4 — Impairment:** A loan of $100,000 becomes impaired. The company recognises an impairment loss of $20,000.",
+                "**Example 5 — Hedge accounting:** A company uses a forward contract to hedge a forecast transaction. It applies cash flow hedge accounting."
+            ],
+            interviewAnswer: "IAS 39 is the <em>'old financial instruments'</em> standard — mostly replaced by IFRS 9. It classified financial assets into four categories and used an incurred loss model for impairment. Think of it as <em>'the predecessor to IFRS 9.'</em> In an interview: <em>'IAS 39 has largely been superseded by IFRS 9, but it introduced the four-category classification and incurred loss model that IFRS 9 replaced with the ECL model.'</em>"
+        },
+        "IAS 37": {
+            fullTitle: "Provisions, Contingent Liabilities and Contingent Assets",
+            literature: [
+                "Provisions are recognised when there is a present obligation from a past event, it is probable that an outflow will be required, and the amount can be estimated reliably.",
+                "Contingent liabilities are not recognised but are disclosed.",
+                "Contingent assets are not recognised but are disclosed if probable.",
+                "Provisions are measured at the best estimate of the expenditure required to settle the obligation.",
+                "Provisions are discounted if the effect is material."
+            ],
+            examples: [
+                "**Example 1 — Provision:** A company faces a lawsuit and expects to pay $50,000. It recognises a provision of $50,000.",
+                "**Example 2 — Contingent liability:** A company faces a lawsuit where the probability of payment is remote. It discloses the contingent liability but does not recognise a provision.",
+                "**Example 3 — Contingent asset:** A company expects to receive $20,000 from an insurance claim. It discloses the contingent asset but does not recognise it.",
+                "**Example 4 — Warranty provision:** A company sells goods with a 1-year warranty. It estimates warranty costs of $10,000 and recognises a provision.",
+                "**Example 5 — Discounting:** A provision of $100,000 is expected to be settled in 5 years. It is discounted to present value using an appropriate discount rate."
+            ],
+            interviewAnswer: "IAS 37 is the <em>'maybe money'</em> standard. It says: <em>If you probably owe money and can estimate it, book a provision. If it's just possible, disclose it. If you might receive money, don't book it until it's virtually certain.</em> Think of it as <em>'provisions are for probable obligations; contingencies are for possible ones.'</em> In an interview: <em>'IAS 37 governs provisions, contingent liabilities, and contingent assets, requiring recognition when an outflow is probable and can be reliably estimated.'</em>"
+        },
+        "IFRS 15": {
+            fullTitle: "Revenue from Contracts with Customers",
+            literature: [
+                "Five-step model: 1) Identify the contract, 2) Identify performance obligations, 3) Determine transaction price, 4) Allocate transaction price, 5) Recognise revenue when performance obligation is satisfied.",
+                "Revenue is recognised when control of goods or services transfers to the customer.",
+                "Variable consideration is estimated and included in the transaction price if it is highly probable there will not be a significant reversal.",
+                "Contract costs are capitalised if they are incremental and expected to be recovered.",
+                "Disclosures about revenue recognition are required."
+            ],
+            examples: [
+                "**Example 1 — Software and support:** A software company sells a licence for $30,000 plus 3 years of support for $6,000. It allocates $30,000 to the licence and $6,000 to support.",
+                "**Example 2 — Performance obligation:** A company sells a machine and installation services. The machine and installation are separate performance obligations.",
+                "**Example 3 — Variable consideration:** A company sells goods with a volume discount. It estimates the discount and includes it in the transaction price.",
+                "**Example 4 — Over time recognition:** A construction company builds a bridge over 3 years. Revenue is recognised over time based on progress.",
+                "**Example 5 — Contract costs:** A company pays $10,000 in legal fees to obtain a contract. The costs are capitalised and amortised over the contract period."
+            ],
+            interviewAnswer: "IFRS 15 is the <em>'five-step revenue'</em> standard. It says: <em>Identify the contract, identify the promises, set the price, allocate the price, and recognise revenue when you deliver.</em> Think of it as <em>'you earn revenue when you keep your promises, not when you sign the contract.'</em> In an interview: <em>'IFRS 15 establishes a five-step model for revenue recognition, focusing on the transfer of control and the satisfaction of performance obligations.'</em>"
+        },
+        "IAS 18": {
+            fullTitle: "Revenue (superseded by IFRS 15)",
+            literature: [
+                "Revenue is recognised when it is probable that future economic benefits will flow to the entity and these benefits can be measured reliably.",
+                "Revenue from the sale of goods is recognised when significant risks and rewards of ownership are transferred.",
+                "Revenue from services is recognised based on the stage of completion.",
+                "Interest, royalties and dividends are recognised on an accrual basis.",
+                "This standard has been superseded by IFRS 15 for periods beginning on or after 1 January 2018."
+            ],
+            examples: [
+                "**Example 1 — Sale of goods:** A company sells goods for $1,000. Revenue is recognised when the goods are delivered.",
+                "**Example 2 — Services:** A company provides consulting services over 6 months. Revenue is recognised based on the stage of completion.",
+                "**Example 3 — Interest:** A company earns interest of $500 on a loan. Revenue is recognised on an accrual basis.",
+                "**Example 4 — Royalties:** A company receives royalties of $2,000 based on sales. Revenue is recognised on an accrual basis.",
+                "**Example 5 — Dividends:** A company receives dividends of $1,000. Revenue is recognised when the right to receive payment is established."
+            ],
+            interviewAnswer: "IAS 18 is the <em>'old revenue'</em> standard — replaced by IFRS 15. It recognised revenue when risks and rewards transferred, and used the stage of completion for services. Think of it as <em>'the predecessor to the five-step model.'</em> In an interview: <em>'IAS 18 has been superseded by IFRS 15, but it recognised revenue based on the transfer of risks and rewards and the stage of completion for services.'</em>"
+        },
+        "IAS 23": {
+            fullTitle: "Borrowing Costs",
+            literature: [
+                "Borrowing costs directly attributable to the acquisition, construction or production of a qualifying asset are capitalised.",
+                "A qualifying asset is one that takes a substantial period of time to get ready for its intended use or sale.",
+                "Other borrowing costs are expensed as incurred.",
+                "Capitalisation begins when expenditure is incurred, borrowing costs are incurred, and activities to prepare the asset are underway.",
+                "Capitalisation ceases when the asset is substantially ready for its intended use or sale."
+            ],
+            examples: [
+                "**Example 1 — Capitalisation:** A company borrows $1m at 5% to build a factory. Annual borrowing cost = $50,000. The $50,000 is capitalised as part of the factory cost.",
+                "**Example 2 — Expensing:** A company borrows $500,000 for working capital. The interest of $25,000 is expensed.",
+                "**Example 3 — Qualifying asset:** A company builds a ship that takes 2 years to complete. Borrowing costs during construction are capitalised.",
+                "**Example 4 — Suspension:** Construction is suspended for 3 months. Borrowing costs during the suspension are expensed.",
+                "**Example 5 — Cessation:** The factory is completed. Borrowing costs after completion are expensed."
+            ],
+            interviewAnswer: "IAS 23 is the <em>'interest on construction'</em> standard. It says: <em>If you borrow money to build a long-term asset, capitalise the interest as part of the asset's cost. Otherwise, expense it.</em> Think of it as <em>'the cost of the building includes the cost of the loan while you're building it.'</em> In an interview: <em>'IAS 23 requires borrowing costs directly attributable to qualifying assets to be capitalised, with other borrowing costs expensed.'</em>"
+        },
+        "IAS 19": {
+            fullTitle: "Employee Benefits",
+            literature: [
+                "Employee benefits include short-term benefits, post-employment benefits, other long-term benefits, and termination benefits.",
+                "Short-term benefits are recognised as an expense as the employee provides service.",
+                "Post-employment benefits include defined contribution plans and defined benefit plans.",
+                "Defined benefit plans require actuarial valuation and recognition of the net defined benefit liability or asset.",
+                "Actuarial gains and losses are recognised in OCI."
+            ],
+            examples: [
+                "**Example 1 — Short-term:** A company pays salaries of $100,000. It recognises an expense of $100,000.",
+                "**Example 2 — Defined contribution:** A company contributes 5% of salary to a pension plan. Contribution = $5,000. The company recognises an expense of $5,000.",
+                "**Example 3 — Defined benefit:** A company has a defined benefit plan. The present value of the obligation is $1m, and plan assets are $900,000. The net liability is $100,000.",
+                "**Example 4 — Actuarial loss:** Actuarial losses of $50,000 are recognised in OCI.",
+                "**Example 5 — Termination benefits:** A company pays $200,000 in termination benefits. The expense is recognised when the entity is committed to terminating employment."
+            ],
+            interviewAnswer: "IAS 19 is the <em>'employee benefits'</em> standard. It says: <em>Pay your employees — but account for it properly. Short-term benefits are expensed as earned. Defined contribution plans are simple — just expense the contribution. Defined benefit plans are complex — use actuarial valuations and recognise actuarial gains/losses in OCI.</em> Think of it as <em>'all the ways you pay people, and how to account for each.'</em> In an interview: <em>'IAS 19 governs accounting for employee benefits, including short-term, post-employment, and termination benefits, with defined benefit plans requiring actuarial valuation and OCI recognition of actuarial gains and losses.'</em>"
+        },
+        "IAS 12": {
+            fullTitle: "Income Taxes",
+            literature: [
+                "Current tax is the amount of income tax payable or recoverable in respect of the taxable profit or loss for a period.",
+                "Deferred tax is recognised on temporary differences between the carrying amount of assets and liabilities and their tax bases.",
+                "Deferred tax liabilities are recognised for taxable temporary differences.",
+                "Deferred tax assets are recognised for deductible temporary differences to the extent that it is probable that taxable profit will be available.",
+                "Deferred tax is measured using the tax rates expected to apply when the asset is realised or the liability is settled."
+            ],
+            examples: [
+                "**Example 1 — Current tax:** A company has taxable profit of $100,000 and a tax rate of 25%. Current tax = $25,000.",
+                "**Example 2 — Deferred tax liability:** A company has a machine with carrying amount $100,000 and tax base $80,000. The taxable temporary difference is $20,000. Deferred tax liability = $5,000 (25%).",
+                "**Example 3 — Deferred tax asset:** A company has a warranty provision of $50,000, which is not deductible until paid. The deductible temporary difference is $50,000. Deferred tax asset = $12,500.",
+                "**Example 4 — Tax loss carryforward:** A company has a tax loss of $100,000 that can be carried forward. It recognises a deferred tax asset of $25,000 if future profits are probable.",
+                "**Example 5 — Measurement:** Deferred tax is measured using the tax rate expected to apply when the temporary difference reverses."
+            ],
+            interviewAnswer: "IAS 12 is the <em>'tax timing'</em> standard. It says: <em>Pay your current tax, but also recognise deferred tax on temporary differences between book and tax values.</em> Think of it as <em>'the tax you owe now, plus the tax you'll owe later.'</em> In an interview: <em>'IAS 12 governs income taxes, requiring recognition of current tax and deferred tax on temporary differences between carrying amounts and tax bases.'</em>"
+        },
+        "IFRS 17": {
+            fullTitle: "Insurance Contracts",
+            literature: [
+                "Insurance contracts are measured using a current fulfilment value approach.",
+                "The liability includes fulfilment cash flows (estimates of future cash flows, discounting, risk adjustment) and a contractual service margin (CSM).",
+                "CSM represents unearned profit and is recognised over the coverage period.",
+                "Insurance revenue and expenses are presented separately in the income statement.",
+                "The standard applies to all insurance contracts, including reinsurance contracts."
+            ],
+            examples: [
+                "**Example 1 — Fulfilment cash flows:** An insurer expects to pay $800,000 in claims and expenses, and receives $1,000,000 in premiums. PV of fulfilment cash flows = $750,000.",
+                "**Example 2 — Risk adjustment:** The risk adjustment is $50,000. The CSM is $200,000 ($1,000,000 - $750,000 - $50,000).",
+                "**Example 3 — CSM recognition:** The CSM of $200,000 is recognised over the 5-year coverage period, $40,000 per year.",
+                "**Example 4 — Insurance revenue:** The insurer recognises insurance revenue of $1,000,000 over the coverage period.",
+                "**Example 5 — Loss component:** If fulfilment cash flows exceed premiums, a loss is recognised immediately."
+            ],
+            interviewAnswer: "IFRS 17 is the <em>'insurance contracts'</em> standard. It says: <em>Measure insurance liabilities at current fulfilment value, including a risk adjustment and a contractual service margin (CSM). Recognise the CSM as profit over the coverage period.</em> Think of it as <em>'the profit is unearned until you provide the coverage.'</em> In an interview: <em>'IFRS 17 requires insurance contracts to be measured at current fulfilment value, with a CSM representing unearned profit recognised over the coverage period.'</em>"
         },
         "IFRS 14": {
             fullTitle: "Regulatory Deferral Accounts",
@@ -641,14 +1095,241 @@
                 "The standard is an interim standard, intended to be replaced by a comprehensive standard."
             ],
             examples: [
-                "**Example 1 — Deferral of costs:** A utility company defers $100,000 of costs that it expects to recover through future rate increases. It presents these as 'regulatory deferral account debit balances'.",
-                "**Example 2 — Regulatory liability:** A utility company has charged customers $50,000 more than its allowed return. It recognises a 'regulatory deferral account credit balance' (liability) for the amount that will be refunded.",
-                "**Example 3 — Election:** A first-time adopter elects to continue its previous GAAP accounting for regulatory deferral accounts. It must apply IFRS 14 consistently to all such balances.",
-                "**Example 4 — Separate presentation:** Regulatory deferral account balances are presented separately on the balance sheet, after non-current assets and liabilities but before equity.",
-                "**Example 5 — Disclosures:** The entity discloses the nature of the rate regulation, the basis on which balances are recognised, and the risks associated with future rate recovery."
-            ]
+                "**Example 1 — Deferral of costs:** A utility defers $100,000 of costs that it expects to recover through future rate increases.",
+                "**Example 2 — Regulatory liability:** A utility has charged customers $50,000 more than its allowed return. It recognises a regulatory liability.",
+                "**Example 3 — Election:** A first-time adopter elects to continue its previous GAAP accounting for regulatory deferral accounts.",
+                "**Example 4 — Separate presentation:** Regulatory deferral account balances are presented separately on the balance sheet.",
+                "**Example 5 — Disclosures:** The entity discloses the nature of rate regulation and the risks associated with future rate recovery."
+            ],
+            interviewAnswer: "IFRS 14 is the <em>'rate regulation'</em> interim standard. It says: <em>If you're a rate-regulated entity adopting IFRS for the first time, you can keep your regulatory deferral accounts.</em> Think of it as <em>'a bridge for utilities moving to IFRS.'</em> In an interview: <em>'IFRS 14 allows first-time adopters that are rate-regulated to continue recognising regulatory deferral account balances, with separate presentation and disclosures.'</em>"
         },
-        "IFRS 15": {
-            fullTitle: "Revenue from Contracts with Customers",
+        "IFRS 19": {
+            fullTitle: "Subsidiaries without Public Accountability: Disclosures",
             literature: [
-                "Five-step model: 1) Identify the contract, 2) Identify performance obligations, 3) Determine transaction price, 4) Allocate transaction price, 5) Recognise revenue
+                "An eligible subsidiary can apply reduced disclosure requirements.",
+                "Eligible if the subsidiary does not have public accountability and its parent prepares consolidated financial statements under IFRS.",
+                "Reduces disclosure burden while still applying all recognition and measurement principles.",
+                "The subsidiary must disclose that it has applied IFRS 19.",
+                "The standard is optional."
+            ],
+            examples: [
+                "**Example 1 — Reduced disclosures:** A small subsidiary applies IFRS 19 and provides reduced disclosures about financial instruments.",
+                "**Example 2 — Eligibility:** The subsidiary does not have public accountability and its parent prepares consolidated financial statements.",
+                "**Example 3 — Disclosure statement:** The subsidiary discloses that it has applied IFRS 19 in its financial statements.",
+                "**Example 4 — Recognition and measurement:** The subsidiary still applies all recognition and measurement principles of IFRS.",
+                "**Example 5 — Comparative:** The subsidiary provides comparatives in accordance with IFRS 19."
+            ],
+            interviewAnswer: "IFRS 19 is the <em>'small subsidiary relief'</em> standard. It says: <em>If you're a subsidiary without public accountability, you can apply reduced disclosures while still following IFRS recognition and measurement rules.</em> Think of it as <em>'lighter disclosure for smaller players.'</em> In an interview: <em>'IFRS 19 allows eligible subsidiaries to apply reduced disclosure requirements while still applying all IFRS recognition and measurement principles.'</em>"
+        },
+        "IAS 20": {
+            fullTitle: "Accounting for Government Grants and Disclosure of Government Assistance",
+            literature: [
+                "Government grants are recognised when there is reasonable assurance that the entity will comply with the conditions and the grant will be received.",
+                "Grants are recognised in profit or loss on a systematic basis over the periods in which the entity recognises the related costs.",
+                "Grants related to assets are presented either as deferred income or as a deduction from the asset's carrying amount.",
+                "Grants related to income are presented as other income or as a deduction from the related expense.",
+                "Repayment of grants is accounted for as a change in estimate."
+            ],
+            examples: [
+                "**Example 1 — Grant for asset:** A company receives a $100,000 grant to buy a machine. It deducts the grant from the machine's cost, so the machine is recognised at $400,000 (if cost is $500,000).",
+                "**Example 2 — Grant for income:** A company receives a $50,000 grant to subsidise wages. It recognises the grant as other income.",
+                "**Example 3 — Deferred income:** A company receives a $100,000 grant for an asset. It recognises deferred income and amortises it over the asset's useful life.",
+                "**Example 4 — Repayment:** A company must repay a $20,000 grant. It recognises the repayment as an expense.",
+                "**Example 5 — Disclosure:** The company discloses the nature and amounts of government grants recognised."
+            ],
+            interviewAnswer: "IAS 20 is the <em>'government grants'</em> standard. It says: <em>Recognise grants when you're reasonably sure you'll get them and comply with the conditions. Match them to the costs they're meant to compensate.</em> Think of it as <em>'don't book free money until you've earned it.'</em> In an interview: <em>'IAS 20 governs government grants, requiring recognition when there is reasonable assurance of receipt and compliance, and matching grants to related costs.'</em>"
+        },
+        "IAS 21": {
+            fullTitle: "The Effects of Changes in Foreign Exchange Rates",
+            literature: [
+                "Foreign currency transactions are recorded at the spot exchange rate on the transaction date.",
+                "Monetary items are retranslated at the closing rate.",
+                "Non-monetary items measured at historical cost are translated at the historical rate.",
+                "Exchange differences are recognised in profit or loss, except for certain items.",
+                "Foreign operations are translated using the closing rate for assets and liabilities and the average rate for income and expenses."
+            ],
+            examples: [
+                "**Example 1 — Transaction:** A company buys goods for $1,000 when the exchange rate is 1.2. It records the purchase at $1,200.",
+                "**Example 2 — Monetary item:** At year-end, the payable is still outstanding. The exchange rate is 1.3. The payable is retranslated to $1,300, and an exchange loss of $100 is recognised.",
+                "**Example 3 — Non-monetary item:** A company buys equipment for $1,000 when the rate is 1.2. The equipment is a non-monetary item and is not retranslated.",
+                "**Example 4 — Foreign operation:** A subsidiary in Europe has net assets of €1m. The closing rate is 1.1. The net assets are translated to $1.1m.",
+                "**Example 5 — Exchange difference:** Exchange differences on translation of a foreign operation are recognised in OCI."
+            ],
+            interviewAnswer: "IAS 21 is the <em>'foreign currency'</em> standard. It says: <em>Record transactions at the spot rate, retranslate monetary items at the closing rate, and recognise exchange differences in profit or loss (or OCI for foreign operations).</em> Think of it as <em>'how to handle money in different currencies.'</em> In an interview: <em>'IAS 21 governs foreign currency translation, requiring monetary items to be retranslated at closing rates and exchange differences to be recognised in profit or loss or OCI.'</em>"
+        },
+        "IAS 24": {
+            fullTitle: "Related Party Disclosures",
+            literature: [
+                "Related party disclosures are required to highlight the possibility that financial statements may be affected by the existence of related party relationships.",
+                "Related parties include subsidiaries, associates, joint ventures, key management personnel, and close family members.",
+                "Disclosures include the nature of the relationship, the amounts of transactions, and outstanding balances.",
+                "Key management personnel compensation must be disclosed.",
+                "Disclosures are required even if there have been no transactions."
+            ],
+            examples: [
+                "**Example 1 — Subsidiary:** A parent company discloses transactions with its subsidiary, including sales of $500,000.",
+                "**Example 2 — Key management:** A company discloses total key management compensation of $1m.",
+                "**Example 3 — Associate:** A company discloses that it purchased goods from an associate for $200,000.",
+                "**Example 4 — Close family:** A company discloses a loan to a close family member of a director.",
+                "**Example 5 — No transactions:** A company discloses that it had no transactions with related parties during the year."
+            ],
+            interviewAnswer: "IAS 24 is the <em>'related party'</em> standard. It says: <em>Tell us about your dealings with people and companies close to you — because those deals might not be at arm's length.</em> Think of it as <em>'full transparency about insider relationships.'</em> In an interview: <em>'IAS 24 requires disclosures about related party relationships and transactions, including key management compensation, to highlight potential conflicts of interest.'</em>"
+        },
+        "IAS 29": {
+            fullTitle: "Financial Reporting in Hyperinflationary Economies",
+            literature: [
+                "Financial statements of an entity whose functional currency is the currency of a hyperinflationary economy must be stated in terms of the measuring unit current at the end of the reporting period.",
+                "All amounts are restated using a general price index.",
+                "Gains or losses on the net monetary position are recognised in profit or loss.",
+                "Comparatives are restated in terms of the current measuring unit.",
+                "The standard provides indicators of hyperinflation."
+            ],
+            examples: [
+                "**Example 1 — Restatement:** A company in a hyperinflationary economy has non-monetary assets of $1m. It restates them using the general price index.",
+                "**Example 2 — Monetary position:** A company has net monetary assets of $500,000. It recognises a loss on the net monetary position.",
+                "**Example 3 — Comparatives:** Prior year figures are restated in terms of the current measuring unit.",
+                "**Example 4 — Inventory:** Inventory is restated using the general price index from the date of purchase.",
+                "**Example 5 — Disclosure:** The company discloses that the financial statements are stated in terms of the measuring unit current at the end of the reporting period."
+            ],
+            interviewAnswer: "IAS 29 is the <em>'hyperinflation'</em> standard. It says: <em>If your currency is losing value fast, restate all your financials in today's money using a general price index.</em> Think of it as <em>'adjusting for the fact that money isn't worth what it used to be.'</em> In an interview: <em>'IAS 29 requires financial statements of entities in hyperinflationary economies to be restated in terms of the current measuring unit, with gains or losses on net monetary position recognised in profit or loss.'</em>"
+        },
+        "IAS 33": {
+            fullTitle: "Earnings per Share",
+            literature: [
+                "Basic EPS is calculated by dividing profit or loss attributable to ordinary shareholders by the weighted average number of ordinary shares outstanding.",
+                "Diluted EPS adjusts for the effects of all dilutive potential ordinary shares.",
+                "Potential ordinary shares include convertible bonds, options, and warrants.",
+                "The weighted average number of shares is adjusted for share splits, bonus issues, and rights issues.",
+                "EPS is presented in the income statement."
+            ],
+            examples: [
+                "**Example 1 — Basic EPS:** Profit = $1m. Weighted average shares = 500,000. Basic EPS = $2.00.",
+                "**Example 2 — Diluted EPS:** Convertible bonds would add 100,000 shares. Diluted EPS = $1m / 600,000 = $1.67.",
+                "**Example 3 — Options:** Options to buy 50,000 shares at $10 when market price is $15. The dilutive effect is 16,667 shares (50,000 - (50,000 × 10/15)).",
+                "**Example 4 — Bonus issue:** A 2-for-1 bonus issue doubles the number of shares. Comparatives are restated.",
+                "**Example 5 — Presentation:** EPS is presented for both basic and diluted earnings."
+            ],
+            interviewAnswer: "IAS 33 is the <em>'earnings per share'</em> standard. It says: <em>Divide profit by the weighted average number of shares — and also show what happens if all dilutive instruments convert.</em> Think of it as <em>'how much profit each share earned, and how much it would earn if everything converted.'</em> In an interview: <em>'IAS 33 governs the calculation and presentation of basic and diluted earnings per share, adjusting for dilutive potential ordinary shares.'</em>"
+        }
+    };
+
+    // ------------------------------------------------------------------
+    // 3. RENDER CARDS
+    // ------------------------------------------------------------------
+    const categoryGrid = document.getElementById('categoryGrid');
+
+    categories.forEach(cat => {
+        const section = document.createElement('div');
+        section.className = 'category-section';
+
+        const title = document.createElement('div');
+        title.className = 'category-title';
+        title.innerHTML = `${cat.name} <span class="badge">${cat.standards.length} standards</span>`;
+        section.appendChild(title);
+
+        const grid = document.createElement('div');
+        grid.className = 'standards-grid';
+
+        cat.standards.forEach(std => {
+            const card = document.createElement('div');
+            card.className = 'standard-card';
+            card.dataset.code = std.code;
+            card.innerHTML = `
+                <div class="code">${std.code} <span>${std.code.startsWith('IFRS') ? 'IFRS' : 'IAS'}</span></div>
+                <div class="short-title">${std.title}</div>
+            `;
+            card.addEventListener('click', () => openModal(std.code));
+            grid.appendChild(card);
+        });
+
+        section.appendChild(grid);
+        categoryGrid.appendChild(section);
+    });
+
+    // ------------------------------------------------------------------
+    // 4. MODAL LOGIC
+    // ------------------------------------------------------------------
+    const overlay = document.getElementById('modalOverlay');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalBody = document.getElementById('modalBody');
+    const closeBtn = document.getElementById('closeModalBtn');
+
+    function openModal(code) {
+        const detail = details[code];
+
+        if (!detail) {
+            modalTitle.innerHTML = `${code} <small>Standard</small>`;
+            modalBody.innerHTML = `
+                <h3>📄 Literature</h3>
+                <p>Detailed literature for ${code} is not available in this demo.</p>
+                <div class="example-box">
+                    <strong>Note:</strong> This standard is part of the active IFRS/IAS framework, but examples are not included in this version.
+                </div>
+            `;
+            overlay.classList.add('active');
+            return;
+        }
+
+        // Title
+        modalTitle.innerHTML = `${code} <small>${detail.fullTitle}</small>`;
+
+        // Body
+        let html = '';
+
+        // Interview Answer (first, most prominent)
+        html += `<div class="interview-box">`;
+        html += `<p>${detail.interviewAnswer}</p>`;
+        html += `</div>`;
+
+        // Literature
+        html += `<h3>📄 Full literature (simplified)</h3>`;
+        html += `<ul>`;
+        detail.literature.forEach(item => {
+            html += `<li>${item}</li>`;
+        });
+        html += `</ul>`;
+
+        // Examples
+        html += `<h3>🧾 Five simple accounting examples</h3>`;
+        detail.examples.forEach((ex) => {
+            let formatted = ex.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            html += `<div class="example-box">`;
+            html += `<p>${formatted}</p>`;
+            html += `</div>`;
+        });
+
+        // Notes for specific standards
+        if (code === 'IFRS 18') {
+            html += `<div class="note">⚠️ IFRS 18 is effective for annual reporting periods beginning on or after 1 January 2027. Early application is permitted.</div>`;
+        }
+        if (code === 'IFRS 17') {
+            html += `<div class="note">⚠️ IFRS 17 is effective for annual periods beginning on or after 1 January 2023.</div>`;
+        }
+        if (code === 'IAS 18') {
+            html += `<div class="note">⚠️ IAS 18 has been superseded by IFRS 15 for periods beginning on or after 1 January 2018.</div>`;
+        }
+        if (code === 'IAS 39') {
+            html += `<div class="note">⚠️ IAS 39 has largely been replaced by IFRS 9. Some entities may still apply IAS 39 for certain hedge accounting.</div>`;
+        }
+
+        modalBody.innerHTML = html;
+        overlay.classList.add('active');
+    }
+
+    function closeModal() {
+        overlay.classList.remove('active');
+    }
+
+    closeBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && overlay.classList.contains('active')) {
+            closeModal();
+        }
+    });
+</script>
+</body>
+</html>
